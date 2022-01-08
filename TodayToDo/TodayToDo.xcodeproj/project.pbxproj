@@ -14,6 +14,9 @@
 		500AAE852789930A006DBE04 /* TodayToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE832789930A006DBE04 /* TodayToDo.xcdatamodeld */; };
 		500AAE872789930B006DBE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 500AAE862789930B006DBE04 /* Assets.xcassets */; };
 		500AAE8A2789930B006DBE04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500AAE882789930B006DBE04 /* LaunchScreen.storyboard */; };
+		500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */; };
+		500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */; };
+		500AAE9D2789B183006DBE04 /* ToDoTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE9C2789B183006DBE04 /* ToDoTableViewHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		500AAE862789930B006DBE04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		500AAE892789930B006DBE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		500AAE8B2789930B006DBE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
+		500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		500AAE9C2789B183006DBE04 /* ToDoTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,7 @@
 			children = (
 				500AAE7A2789930A006DBE04 /* AppDelegate.swift */,
 				500AAE7C2789930A006DBE04 /* SceneDelegate.swift */,
+				500AAE9327899D98006DBE04 /* Views */,
 				500AAE9227899CB0006DBE04 /* ViewControllers */,
 				500AAE9127899CA4006DBE04 /* Storyboards */,
 				500AAE862789930B006DBE04 /* Assets.xcassets */,
@@ -84,6 +91,24 @@
 				500AAE7E2789930A006DBE04 /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		500AAE9327899D98006DBE04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				500AAE9B27899F05006DBE04 /* ToDoTableViewCell */,
+				500AAE9C2789B183006DBE04 /* ToDoTableViewHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		500AAE9B27899F05006DBE04 /* ToDoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */,
+				500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */,
+			);
+			path = ToDoTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				500AAE8A2789930B006DBE04 /* LaunchScreen.storyboard in Resources */,
+				500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */,
 				500AAE872789930B006DBE04 /* Assets.xcassets in Resources */,
 				500AAE822789930A006DBE04 /* Main.storyboard in Resources */,
 			);
@@ -160,7 +186,9 @@
 				500AAE7F2789930A006DBE04 /* ViewController.swift in Sources */,
 				500AAE852789930A006DBE04 /* TodayToDo.xcdatamodeld in Sources */,
 				500AAE7B2789930A006DBE04 /* AppDelegate.swift in Sources */,
+				500AAE9D2789B183006DBE04 /* ToDoTableViewHeaderView.swift in Sources */,
 				500AAE7D2789930A006DBE04 /* SceneDelegate.swift in Sources */,
+				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
