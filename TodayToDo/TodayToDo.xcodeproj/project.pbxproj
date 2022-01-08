@@ -60,14 +60,30 @@
 			children = (
 				500AAE7A2789930A006DBE04 /* AppDelegate.swift */,
 				500AAE7C2789930A006DBE04 /* SceneDelegate.swift */,
-				500AAE7E2789930A006DBE04 /* ViewController.swift */,
-				500AAE802789930A006DBE04 /* Main.storyboard */,
+				500AAE9227899CB0006DBE04 /* ViewControllers */,
+				500AAE9127899CA4006DBE04 /* Storyboards */,
 				500AAE862789930B006DBE04 /* Assets.xcassets */,
 				500AAE882789930B006DBE04 /* LaunchScreen.storyboard */,
 				500AAE8B2789930B006DBE04 /* Info.plist */,
 				500AAE832789930A006DBE04 /* TodayToDo.xcdatamodeld */,
 			);
 			path = TodayToDo;
+			sourceTree = "<group>";
+		};
+		500AAE9127899CA4006DBE04 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				500AAE802789930A006DBE04 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		500AAE9227899CB0006DBE04 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				500AAE7E2789930A006DBE04 /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +309,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HUYT8H6334;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayToDo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -300,6 +317,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,6 +338,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HUYT8H6334;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayToDo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -327,6 +346,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
