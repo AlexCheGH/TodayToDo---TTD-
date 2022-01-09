@@ -20,6 +20,9 @@
 		500AAEA22789EDC8006DBE04 /* DetailedViewCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */; };
 		500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */; };
 		500AAEA92789EE98006DBE04 /* DetailedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */; };
+		50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235373278B13A40003DC85 /* Task+CoreDataClass.swift */; };
+		50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */; };
+		5023537A278B16590003DC85 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235379278B16590003DC85 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedViewCard.xib; sourceTree = "<group>"; };
 		500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewCard.swift; sourceTree = "<group>"; };
 		500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCardViewController.swift; sourceTree = "<group>"; };
+		50235373278B13A40003DC85 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50235379278B16590003DC85 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,7 @@
 			children = (
 				500AAE7A2789930A006DBE04 /* AppDelegate.swift */,
 				500AAE7C2789930A006DBE04 /* SceneDelegate.swift */,
+				50235372278B13940003DC85 /* Model */,
 				500AAE9327899D98006DBE04 /* Views */,
 				500AAE9227899CB0006DBE04 /* ViewControllers */,
 				500AAE9127899CA4006DBE04 /* Storyboards */,
@@ -126,6 +133,32 @@
 				500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */,
 			);
 			path = DetailedCardView;
+			sourceTree = "<group>";
+		};
+		50235372278B13940003DC85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50235378278B16430003DC85 /* Weather */,
+				50235377278B16360003DC85 /* Task */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		50235377278B16360003DC85 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				50235373278B13A40003DC85 /* Task+CoreDataClass.swift */,
+				50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		50235378278B16430003DC85 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				50235379278B16590003DC85 /* Weather.swift */,
+			);
+			path = Weather;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,10 +237,13 @@
 				500AAEA92789EE98006DBE04 /* DetailedCardViewController.swift in Sources */,
 				500AAE7F2789930A006DBE04 /* ViewController.swift in Sources */,
 				500AAE852789930A006DBE04 /* TodayToDo.xcdatamodeld in Sources */,
+				5023537A278B16590003DC85 /* Weather.swift in Sources */,
+				50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */,
 				500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */,
 				500AAE7B2789930A006DBE04 /* AppDelegate.swift in Sources */,
 				500AAE9D2789B183006DBE04 /* ToDoTableViewHeaderView.swift in Sources */,
 				500AAE7D2789930A006DBE04 /* SceneDelegate.swift in Sources */,
+				50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */,
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
