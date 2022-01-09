@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ToDoCellProtocol {
+    func cellTapped()
+}
+
 class ToDoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var statusLabel: UILabel!
@@ -15,10 +19,13 @@ class ToDoTableViewCell: UITableViewCell {
     private let statusDoneString = "✔️"
     private let statusNotDoneString = "🔲"
     
+    var delegate: ToDoCellProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         addStatusChangeTapGesture()
+        addTaskLabelTapGesture()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,7 +37,6 @@ class ToDoTableViewCell: UITableViewCell {
         changeStatusLabel(isDone: isDone)
     }
     
-    
     private func addStatusChangeTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action:#selector(onTapGesture))
         statusLabel.isUserInteractionEnabled = true
@@ -39,6 +45,16 @@ class ToDoTableViewCell: UITableViewCell {
     
     @objc private func onTapGesture(_ sender: UITapGestureRecognizer) {
         print("test")
+    }
+    
+    private func addTaskLabelTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onLabelTap))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc private func onLabelTap(_ sender: UITapGestureRecognizer) {
+        delegate?.cellTapped()
     }
     
     private func changeStatusLabel(isDone: Bool) {
@@ -51,7 +67,6 @@ class ToDoTableViewCell: UITableViewCell {
         }
     }
     
-    
     private func markCellDone() {
         guard let text = taskNameLabel.text else { return }
         let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
@@ -59,8 +74,4 @@ class ToDoTableViewCell: UITableViewCell {
         
         self.backgroundColor = .gray
     }
-    
-    
-    
-    
 }

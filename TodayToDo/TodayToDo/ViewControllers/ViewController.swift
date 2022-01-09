@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private let tableViewCellName = "ToDoTableViewCell"
@@ -29,8 +29,8 @@ class ViewController: UIViewController {
         
         setupTableView()
     }
-
-
+    
+    
     //MARK: - UITableView setup
     private func setupTableView() {
         tableView.delegate = self
@@ -53,6 +53,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.configureCell(taskName: dummyTexts[indexPath.row],
                            isDone: dummyBools[indexPath.row])
+                cell.delegate = self
+        
         return cell
     }
     
@@ -63,17 +65,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //Configuring custom header to display current date, weather.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                    tableViewHeaderId) as! ToDoTableViewHeaderView
+                                                                    tableViewHeaderId) as! ToDoTableViewHeaderView
         headerView.dateLabel.text = "Today, October 26"
         headerView.temperature.text = "26º"
         
         let image = UIImage(named: "weatherIcon")
         headerView.weatherImage.image = image
         headerView.delegate = self
-
+        
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         100
     }
@@ -82,6 +84,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension UIViewController: SettingsTappedProtocol {
     func onSettingsTap() {
-        print("Settings button has been tapped!")
+        
     }
+}
+
+extension UIViewController: ToDoCellProtocol {
+    func cellTapped() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "DetailedCardViewController") as! DetailedCardViewController
+        present(vc, animated: true, completion: nil)
+
+
+    }
+
+
 }
