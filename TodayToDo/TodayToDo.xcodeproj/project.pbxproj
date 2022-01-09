@@ -17,6 +17,9 @@
 		500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */; };
 		500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */; };
 		500AAE9D2789B183006DBE04 /* ToDoTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE9C2789B183006DBE04 /* ToDoTableViewHeaderView.swift */; };
+		500AAEA22789EDC8006DBE04 /* DetailedViewCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */; };
+		500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */; };
+		500AAEA92789EE98006DBE04 /* DetailedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		500AAE9C2789B183006DBE04 /* ToDoTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewHeaderView.swift; sourceTree = "<group>"; };
+		500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedViewCard.xib; sourceTree = "<group>"; };
+		500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewCard.swift; sourceTree = "<group>"; };
+		500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				500AAE7E2789930A006DBE04 /* ViewController.swift */,
+				500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -96,6 +103,7 @@
 		500AAE9327899D98006DBE04 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				500AAEA02789EDA9006DBE04 /* DetailedCardView */,
 				500AAE9B27899F05006DBE04 /* ToDoTableViewCell */,
 				500AAE9C2789B183006DBE04 /* ToDoTableViewHeaderView.swift */,
 			);
@@ -109,6 +117,15 @@
 				500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */,
 			);
 			path = ToDoTableViewCell;
+			sourceTree = "<group>";
+		};
+		500AAEA02789EDA9006DBE04 /* DetailedCardView */ = {
+			isa = PBXGroup;
+			children = (
+				500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */,
+				500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */,
+			);
+			path = DetailedCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +190,7 @@
 				500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */,
 				500AAE872789930B006DBE04 /* Assets.xcassets in Resources */,
 				500AAE822789930A006DBE04 /* Main.storyboard in Resources */,
+				500AAEA22789EDC8006DBE04 /* DetailedViewCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,8 +201,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				500AAEA92789EE98006DBE04 /* DetailedCardViewController.swift in Sources */,
 				500AAE7F2789930A006DBE04 /* ViewController.swift in Sources */,
 				500AAE852789930A006DBE04 /* TodayToDo.xcdatamodeld in Sources */,
+				500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */,
 				500AAE7B2789930A006DBE04 /* AppDelegate.swift in Sources */,
 				500AAE9D2789B183006DBE04 /* ToDoTableViewHeaderView.swift in Sources */,
 				500AAE7D2789930A006DBE04 /* SceneDelegate.swift in Sources */,
