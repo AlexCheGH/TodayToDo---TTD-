@@ -17,11 +17,7 @@ class ViewController: UIViewController {
     
     private let cellHeight:CGFloat = 50
     
-    
-    
-    private let dummyTexts = ["Make dishes", "Read books", "Write code", "Watch a movie", "Clean room"]
-    private let dummyBools = [true, false, false, true, true]
-    
+    private var taskManager = TaskManager()
     
     
     override func viewDidLoad() {
@@ -45,14 +41,15 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dummyBools.count
+//        taskManager.userTasks.count
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath) as! ToDoTableViewCell
         
-        cell.configureCell(taskName: dummyTexts[indexPath.row],
-                           isDone: dummyBools[indexPath.row])
+        cell.configureCell(taskName: "TASK"/*taskManager.userTasks[indexPath.row].taskTitle as! String*/,
+                           isDone: false)/*taskManager.userTasks[indexPath.row].taskIsDone as! Bool)*/
                 cell.delegate = self
         
         return cell
@@ -90,13 +87,15 @@ extension UIViewController: SettingsTappedProtocol {
 
 extension UIViewController: ToDoCellProtocol {
     func cellTapped() {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(identifier: "DetailedCardViewController") as! DetailedCardViewController
-        present(vc, animated: true, completion: nil)
-
-
+        let viewController = storyboard.instantiateViewController(identifier: "DetailedCardViewController") as! DetailedCardViewController
+        viewController.delegate = self //DetailedCardViewProtocol
+        present(viewController, animated: true, completion: nil)
     }
+}
 
-
+extension UIViewController: DetailedCardViewProtocol {
+    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String) {
+        
+    }
 }

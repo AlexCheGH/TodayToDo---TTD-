@@ -23,6 +23,8 @@
 		50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235373278B13A40003DC85 /* Task+CoreDataClass.swift */; };
 		50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */; };
 		5023537A278B16590003DC85 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235379278B16590003DC85 /* Weather.swift */; };
+		5023537D278B44670003DC85 /* Task Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537C278B44670003DC85 /* Task Manager.swift */; };
+		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		50235373278B13A40003DC85 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		50235379278B16590003DC85 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		5023537C278B44670003DC85 /* Task Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Manager.swift"; sourceTree = "<group>"; };
+		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 			children = (
 				500AAE7A2789930A006DBE04 /* AppDelegate.swift */,
 				500AAE7C2789930A006DBE04 /* SceneDelegate.swift */,
+				5023537B278B44550003DC85 /* Managers */,
 				50235372278B13940003DC85 /* Model */,
 				500AAE9327899D98006DBE04 /* Views */,
 				500AAE9227899CB0006DBE04 /* ViewControllers */,
@@ -159,6 +164,15 @@
 				50235379278B16590003DC85 /* Weather.swift */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		5023537B278B44550003DC85 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5023537C278B44670003DC85 /* Task Manager.swift */,
+				5023537E278B489B0003DC85 /* DateManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +258,9 @@
 				500AAE9D2789B183006DBE04 /* ToDoTableViewHeaderView.swift in Sources */,
 				500AAE7D2789930A006DBE04 /* SceneDelegate.swift in Sources */,
 				50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */,
+				5023537F278B489B0003DC85 /* DateManager.swift in Sources */,
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
+				5023537D278B44670003DC85 /* Task Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

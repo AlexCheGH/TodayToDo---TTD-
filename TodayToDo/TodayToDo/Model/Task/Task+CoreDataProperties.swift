@@ -16,10 +16,8 @@ extension Task {
     
     @NSManaged public var taskTitle: NSObject?
     @NSManaged public var taskDescription: NSObject?
-    @NSManaged public var taskIsDone: NSObject?
+    @NSManaged public var taskIsDone: NSObject
     @NSManaged public var tasksDate: NSObject?
-    @NSManaged public var taskDayWeather: NSObject?
-    
 }
 
 extension Task: Identifiable { }
