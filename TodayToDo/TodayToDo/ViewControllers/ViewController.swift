@@ -89,8 +89,7 @@ extension ViewController: SettingsTappedProtocol {
 
 extension ViewController: ToDoCellProtocol {
     func cellTapped(preciseDate: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let viewController = storyboard.instantiateViewController(identifier: "DetailedCardViewController") as! DetailedCardViewController
+        let viewController = ViewControllerFactory.viewController(for: .detailedCard) as! DetailedCardViewController
         viewController.delegate = self //DetailedCardViewProtocol
         
         let task = taskManager.getTask(preciseTaskDate: preciseDate)
