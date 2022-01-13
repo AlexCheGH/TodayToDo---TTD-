@@ -32,7 +32,7 @@ struct TaskManager {
         task.taskIsDone = taskIsDone as NSObject
         task.tasksDate = DateManager().preciseDate as NSObject
         
-        
+        saveEntry()
     }
     
     private mutating func saveEntry() {
@@ -58,4 +58,18 @@ struct TaskManager {
             loadTasks()
         }
     }
+
+    func getTask(preciseTaskDate: String) -> Task {
+        userTasks.filter{ $0.tasksDate as! String == preciseTaskDate }.first! //should always exist
+    }
+    
+    
+    
+    mutating func createTestTasks() {
+        for index in 1...4 {
+            addNewEntry(title: "Title #\(index)", description: "A description for title #\(index)")
+        }
+        loadTasks()
+    }
+    
 }

@@ -20,7 +20,7 @@ class DateManager {
     }
     
     var preciseDate: String {
-        dateFormatter.dateFormat = compactDateFormat
+        dateFormatter.dateFormat = preciseDateFormat
         return dateFormatter.string(from: date)
     }
 }
