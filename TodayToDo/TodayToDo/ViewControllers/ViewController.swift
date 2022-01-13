@@ -41,15 +41,16 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        taskManager.userTasks.count
-        1
+        taskManager.userTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let task = taskManager.userTasks[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath) as! ToDoTableViewCell
         
-        cell.configureCell(taskName: "TASK"/*taskManager.userTasks[indexPath.row].taskTitle as! String*/,
-                           isDone: false)/*taskManager.userTasks[indexPath.row].taskIsDone as! Bool)*/
+        cell.configureCell(taskName: task.taskTitle as! String,
+                           isDone: task.taskIsDone as! Bool,
+                           preciseDate: task.tasksDate as! String)
                 cell.delegate = self
         
         return cell
@@ -79,22 +80,35 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension UIViewController: SettingsTappedProtocol {
+extension ViewController: SettingsTappedProtocol {
     func onSettingsTap() {
-        
+//        taskManager.createTestTasks()
+//        print(taskManager.userTasks)
     }
 }
 
-extension UIViewController: ToDoCellProtocol {
-    func cellTapped() {
+extension ViewController: ToDoCellProtocol {
+    func cellTapped(preciseDate: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: "DetailedCardViewController") as! DetailedCardViewController
         viewController.delegate = self //DetailedCardViewProtocol
+        
+        let task = taskManager.getTask(preciseTaskDate: preciseDate)
+        
+        viewController.configureTaskFields(taskTitle: (task.taskTitle as! String),
+                                           taskDescription: (task.taskDescription as! String),
+                                           taskStatus: task.taskIsDone as! Bool,
+                                           preciseDate: (task.tasksDate as! String))
         present(viewController, animated: true, completion: nil)
     }
 }
 
-extension UIViewController: DetailedCardViewProtocol {
+extension ViewController: DetailedCardViewProtocol {
+    func deleteTask(preciseDate: String) {
+        taskManager.removeEntry(for: preciseDate)
+        tableView.reloadData()
+    }
+    
     func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String) {
         
     }
