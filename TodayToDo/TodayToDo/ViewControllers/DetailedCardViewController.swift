@@ -9,14 +9,14 @@ import UIKit
 
 protocol DetailedCardViewProtocol {
     
-    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String)
+    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?)
     
     func deleteTask(preciseDate: String)
 }
 
 class DetailedCardViewController: UIViewController {
     
-    @IBOutlet weak var titleField: UILabel!
+    @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusIcon: UILabel!
@@ -36,6 +36,7 @@ class DetailedCardViewController: UIViewController {
         
         configureDeleteButton()
         titleField.text = preciseDate
+        titleField.delegate = self
         configure()
     }
     
@@ -67,11 +68,30 @@ class DetailedCardViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onTextFieldTap(_ sender: UITextField) {
+        
+    }
+    
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.cardWillClose(taskTitle: titleField.text,
                                 taskDescription: descriptionField.text,
                                 taskIsDone: statusIcon.text == "✔️" ? true : false,
-                                taskPresiceDate: DateManager().preciseDate)
+                                taskPresiceDate: preciseDate)
     }
+}
+
+extension DetailedCardViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        title = textField.text
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let _ = textField.text else { return false }
+    
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }

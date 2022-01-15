@@ -108,7 +108,15 @@ extension ViewController: DetailedCardViewProtocol {
         tableView.reloadData()
     }
     
-    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String) {
+    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
+        
+        guard let title = taskTitle, let description = taskDescription else { return }
+        let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+        
+        taskManager.createNewTask(title: title,
+                                  description: description,
+                                  taskIsDone: taskIsDone,
+                                  preciseDate: preciseDate)
         
     }
 }
