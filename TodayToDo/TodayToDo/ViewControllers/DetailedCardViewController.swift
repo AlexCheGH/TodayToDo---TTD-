@@ -10,7 +10,6 @@ import UIKit
 protocol DetailedCardViewProtocol {
     
     func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?)
-    
     func deleteTask(preciseDate: String)
 }
 
@@ -51,6 +50,18 @@ class DetailedCardViewController: UIViewController {
         self.titleField.text = taskTitle
         self.descriptionField.text = taskDescription
         self.statusIcon.text = taskIsDone ? "✔️" : "🔲"
+        
+        titleField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    /// Check new user inputs for titleField
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        highlightTitleField(isEmpty: text.isEmpty)
+    }
+    
+    private func highlightTitleField(isEmpty: Bool) {
+        isEmpty ? (titleField.backgroundColor = .red) : (titleField.backgroundColor = .white)
     }
     
     private func configureDeleteButton() {
