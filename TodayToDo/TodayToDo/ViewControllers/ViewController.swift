@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     private let tableViewCellName = "ToDoTableViewCell"
     private let tableViewCellID = "todoCellID"
     private let tableViewHeaderId = "sectionHeader"
+    private let tableViewFooterId = "sectionFooter"
     
-    private let cellHeight:CGFloat = 50
+    private let cellHeight: CGFloat = 50
+    private let footerHeaderHeight: CGFloat = 100
     
     private var taskManager = TaskManager()
     
@@ -26,18 +28,17 @@ class ViewController: UIViewController {
         setupTableView()
     }
     
-    
-    //MARK: - UITableView setup
+    //MARK: UITableView setup
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: tableViewCellName, bundle: Bundle.main), forCellReuseIdentifier: tableViewCellID)
         
-        tableView.register(ToDoTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: tableViewHeaderId)
-        
+        tableView.register(ToDoTableHeaderView.self, forHeaderFooterViewReuseIdentifier: tableViewHeaderId)
+        tableView.register(ToDoTableFooterView.self, forHeaderFooterViewReuseIdentifier: tableViewFooterId)
     }
 }
-
+// MARK: UITableView Delegate & DataSource
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,7 +52,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(taskName: task.taskTitle as! String,
                            isDone: task.taskIsDone as! Bool,
                            preciseDate: task.tasksDate as! String)
-                cell.delegate = self
+        cell.delegate = self
         
         return cell
     }
@@ -60,11 +61,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cellHeight
     }
     
-    //Configuring custom header to display current date, weather.
+    //MARK: Header configuration
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                    tableViewHeaderId) as! ToDoTableViewHeaderView
-        headerView.dateLabel.text = "Today, October 26"
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tableViewHeaderId) as! ToDoTableHeaderView
+        headerView.dateLabel.text = DateManager().compactDate
         headerView.temperature.text = "26º"
         
         let image = UIImage(named: "weatherIcon")
@@ -75,40 +75,73 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        100
+        footerHeaderHeight
     }
     
+    //MARK: Footer configuration
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tableViewFooterId) as! ToDoTableFooterView
+        footerView.delegate = self
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        footerHeaderHeight
+    }
 }
-
+// MARK: SettingTappedProtocol
 extension ViewController: SettingsTappedProtocol {
     func onSettingsTap() {
-//        taskManager.createTestTasks()
-//        print(taskManager.userTasks)
     }
 }
 
-extension ViewController: ToDoCellProtocol {
-    func cellTapped(preciseDate: String) {
-        let viewController = ViewControllerFactory.viewController(for: .detailedCard) as! DetailedCardViewController
-        viewController.delegate = self //DetailedCardViewProtocol
-        
-        let task = taskManager.getTask(preciseTaskDate: preciseDate)
-        
-        viewController.configureTaskFields(taskTitle: (task.taskTitle as! String),
-                                           taskDescription: (task.taskDescription as! String),
-                                           taskStatus: task.taskIsDone as! Bool,
-                                           preciseDate: (task.tasksDate as! String))
+//MARK: FooterViewDelegate
+extension ViewController: FooterViewDelegate {
+    func onAddButtonTap() {
+        let viewController = createDetailedCardVC(preciseDate: nil)
         present(viewController, animated: true, completion: nil)
     }
 }
 
+//MARK: TODOCellProtocol
+extension ViewController: ToDoCellProtocol {
+    func cellTapped(preciseDate: String) {
+        let viewController = createDetailedCardVC(preciseDate: preciseDate)
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    private func createDetailedCardVC(preciseDate: String?) -> DetailedCardViewController {
+        let viewController = ViewControllerFactory.viewController(for: .detailedCard) as! DetailedCardViewController
+        viewController.delegate = self //DetailedCardViewProtocol
+        
+        if let preciseDate = preciseDate {
+            let task = taskManager.getTask(preciseTaskDate: preciseDate)
+            viewController.configureTaskFields(taskTitle: (task.taskTitle as! String),
+                                               taskDescription: (task.taskDescription as! String),
+                                               taskStatus: task.taskIsDone as! Bool,
+                                               preciseDate: (task.tasksDate as! String))
+        } else {
+            let date = DateManager().preciseDate
+            viewController.preciseDate = date
+        }
+        return viewController
+    }
+}
+
+//MARK: DetailedCardViewProtocol
 extension ViewController: DetailedCardViewProtocol {
     func deleteTask(preciseDate: String) {
         taskManager.removeEntry(for: preciseDate)
         tableView.reloadData()
     }
     
-    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String) {
-        
+    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
+        if let title = taskTitle, let description = taskDescription {
+            let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+            taskManager.createNewTask(title: title,
+                                      description: description,
+                                      taskIsDone: taskIsDone,
+                                      preciseDate: preciseDate)
+        }
     }
 }

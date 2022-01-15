@@ -1,5 +1,5 @@
 //
-//  ToDoTableViewHeaderView.swift
+//  ToDoTableHeaderView.swift
 //  TodayToDo
 //
 //  Created by Alex Chekushkin on 1/8/22.
@@ -11,7 +11,7 @@ protocol SettingsTappedProtocol {
     func onSettingsTap()
 }
 
-class ToDoTableViewHeaderView: UITableViewHeaderFooterView {
+class ToDoTableHeaderView: UITableViewHeaderFooterView {
     
     let dateLabel = UILabel()
     let temperature = UILabel()
