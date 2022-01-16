@@ -122,7 +122,7 @@ extension ViewController: FooterViewDelegate {
 }
 
 //MARK: TODOCellProtocol
-extension ViewController: ToDoCellProtocol {    
+extension ViewController: ToDoCellProtocol {
     func cellCheckBoxTapped(preciseDate: String, taskIsDone: Bool) {
         
         let task = taskManager.getTask(preciseTaskDate: preciseDate)
@@ -141,7 +141,15 @@ extension ViewController: ToDoCellProtocol {
 
 //MARK: DetailedCardViewProtocol
 extension ViewController: DetailedCardViewProtocol {
-    func deleteTask(preciseDate: String) {
+    func onCheckBoxTap(taskIsDone: Bool, preciseDate: String) {
+        let task = taskManager.getTask(preciseTaskDate: preciseDate)
+        taskManager.createNewTask(title: task.taskTitle as! String,
+                                   description: (task.taskDescription as! String),
+                                   taskIsDone: taskIsDone,
+                                   preciseDate: preciseDate)
+    }
+    
+    func onDeleteTask(preciseDate: String) {
         taskManager.removeEntry(for: preciseDate)
         tableView.reloadData()
     }
