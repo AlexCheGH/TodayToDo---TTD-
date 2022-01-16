@@ -8,7 +8,8 @@
 import UIKit
 
 protocol ToDoCellProtocol {
-    func cellTapped(preciseDate: String)
+    func cellLabelTapped(preciseDate: String)
+    func cellCheckBoxTapped(preciseDate: String, taskIsDone: Bool)
 }
 
 class ToDoTableViewCell: UITableViewCell {
@@ -18,6 +19,7 @@ class ToDoTableViewCell: UITableViewCell {
     
     private let statusDoneString = "✔️"
     private let statusNotDoneString = "🔲"
+    private var taskIsDone = false
     
     var delegate: ToDoCellProtocol?
     //to detect tapped cell to modify or delete it
@@ -38,6 +40,7 @@ class ToDoTableViewCell: UITableViewCell {
         taskNameLabel.text = taskName
         changeStatusLabel(isDone: isDone)
         cellPreciseDate = preciseDate
+        taskIsDone = isDone
     }
     
     private func addStatusChangeTapGesture() {
@@ -47,7 +50,11 @@ class ToDoTableViewCell: UITableViewCell {
     }
     
     @objc private func onTapGesture(_ sender: UITapGestureRecognizer) {
-        print("test")
+        taskIsDone.toggle()
+        delegate?.cellCheckBoxTapped(preciseDate: cellPreciseDate, taskIsDone: taskIsDone)
+        
+        changeStatusLabel(isDone: taskIsDone)
+        
     }
     
     private func addTaskLabelTapGesture() {
@@ -57,7 +64,7 @@ class ToDoTableViewCell: UITableViewCell {
     }
     
     @objc private func onLabelTap(_ sender: UITapGestureRecognizer) {
-        delegate?.cellTapped(preciseDate: cellPreciseDate)
+        delegate?.cellLabelTapped(preciseDate: cellPreciseDate)
     }
     
     private func changeStatusLabel(isDone: Bool) {

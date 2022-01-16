@@ -37,6 +37,24 @@ class ViewController: UIViewController {
         tableView.register(ToDoTableHeaderView.self, forHeaderFooterViewReuseIdentifier: tableViewHeaderId)
         tableView.register(ToDoTableFooterView.self, forHeaderFooterViewReuseIdentifier: tableViewFooterId)
     }
+    
+    private func createDetailedCardVC(preciseDate: String?) -> DetailedCardViewController {
+        let viewController = ViewControllerFactory.viewController(for: .detailedCard) as! DetailedCardViewController
+        viewController.delegate = self //DetailedCardViewProtocol
+        
+        if let preciseDate = preciseDate {
+            let task = taskManager.getTask(preciseTaskDate: preciseDate)
+            viewController.configureTaskFields(taskTitle: (task.taskTitle as! String),
+                                               taskDescription: (task.taskDescription as! String),
+                                               taskStatus: task.taskIsDone as! Bool,
+                                               preciseDate: (task.tasksDate as! String))
+        } else {
+            let date = DateManager().preciseDate
+            viewController.preciseDate = date
+        }
+        return viewController
+    }
+    
 }
 // MARK: UITableView Delegate & DataSource
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,32 +123,33 @@ extension ViewController: FooterViewDelegate {
 
 //MARK: TODOCellProtocol
 extension ViewController: ToDoCellProtocol {
-    func cellTapped(preciseDate: String) {
-        let viewController = createDetailedCardVC(preciseDate: preciseDate)
-        present(viewController, animated: true, completion: nil)
+    func cellCheckBoxTapped(preciseDate: String, taskIsDone: Bool) {
+        
+        let task = taskManager.getTask(preciseTaskDate: preciseDate)
+        taskManager.createNewTask(title: task.taskTitle as! String,
+                                  description: (task.taskDescription as! String),
+                                  taskIsDone: taskIsDone,
+                                  preciseDate: preciseDate)
+        
     }
     
-    private func createDetailedCardVC(preciseDate: String?) -> DetailedCardViewController {
-        let viewController = ViewControllerFactory.viewController(for: .detailedCard) as! DetailedCardViewController
-        viewController.delegate = self //DetailedCardViewProtocol
-        
-        if let preciseDate = preciseDate {
-            let task = taskManager.getTask(preciseTaskDate: preciseDate)
-            viewController.configureTaskFields(taskTitle: (task.taskTitle as! String),
-                                               taskDescription: (task.taskDescription as! String),
-                                               taskStatus: task.taskIsDone as! Bool,
-                                               preciseDate: (task.tasksDate as! String))
-        } else {
-            let date = DateManager().preciseDate
-            viewController.preciseDate = date
-        }
-        return viewController
+    func cellLabelTapped(preciseDate: String) {
+        let viewController = createDetailedCardVC(preciseDate: preciseDate)
+        present(viewController, animated: true, completion: nil)
     }
 }
 
 //MARK: DetailedCardViewProtocol
 extension ViewController: DetailedCardViewProtocol {
-    func deleteTask(preciseDate: String) {
+    func onCheckBoxTap(taskIsDone: Bool, preciseDate: String) {
+        let task = taskManager.getTask(preciseTaskDate: preciseDate)
+        taskManager.createNewTask(title: task.taskTitle as! String,
+                                   description: (task.taskDescription as! String),
+                                   taskIsDone: taskIsDone,
+                                   preciseDate: preciseDate)
+    }
+    
+    func onDeleteTask(preciseDate: String) {
         taskManager.removeEntry(for: preciseDate)
         tableView.reloadData()
     }

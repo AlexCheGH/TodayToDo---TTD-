@@ -49,6 +49,7 @@ struct TaskManager {
         if let preciseDate = preciseDate {
             editEntry(title: title,
                       description: description,
+                      taskIsDone: taskIsDone,
                       preciseDate: preciseDate)
         } else {
             let date = DateManager().preciseDate
@@ -72,26 +73,21 @@ struct TaskManager {
     // Edits an existing task
     private mutating func editEntry(title: String, description: String?, taskIsDone: Bool = false, preciseDate: String) {
         let task = getTask(preciseTaskDate: preciseDate)
-        task.tasksDate = preciseDate as NSObject?
+        task.tasksDate = preciseDate as NSObject
         task.taskIsDone = taskIsDone as NSObject
         task.taskDescription = (description ?? "") as NSObject
-        task.taskTitle = title as NSObject?
+        task.taskTitle = title as NSObject
         
         validateTask(task: task) ? saveEntry() : Void()
     }
     
     /// Removes task for the specific date
     mutating func removeEntry(for preciseDate: String) {
-        let objectDate = preciseDate as NSObject
-        //the date is precise, no cases of double values can occure
-        let wrappedEntry = tasks.filter{ $0.tasksDate == objectDate }.first
+        let task = getTask(preciseTaskDate: preciseDate)
+        let index = tasks.firstIndex(of: task)
         
-        if let entry = wrappedEntry {
-            let index = tasks.firstIndex(of: entry)
-            context.delete(tasks[index!]) //force unwrap - is it safe?
-            saveEntry()
-            loadTasks()
-        }
+        context.delete(tasks[index!])
+        saveEntry()
     }
     
     // Validates whether a task needs to be created or not. If task title is empty it wont be created. If a task lack title, but has a description it'll be named as the description first symbols
@@ -107,8 +103,10 @@ struct TaskManager {
             let text = String(description.prefix(10) + "...")
             task.taskTitle = text as NSObject
             return true
+        } else if titleIsEmpty && descriptionIsEmpty {
+            return false
         }
-        return false
+        return true
     }
     
 }

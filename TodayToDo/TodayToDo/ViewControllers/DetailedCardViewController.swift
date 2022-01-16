@@ -10,7 +10,8 @@ import UIKit
 protocol DetailedCardViewProtocol {
     
     func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?)
-    func deleteTask(preciseDate: String)
+    func onDeleteTask(preciseDate: String)
+    func onCheckBoxTap(taskIsDone: Bool, preciseDate: String)
 }
 
 class DetailedCardViewController: UIViewController {
@@ -18,7 +19,7 @@ class DetailedCardViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var statusIcon: UILabel!
+    @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
     var delegate: DetailedCardViewProtocol?
@@ -49,7 +50,7 @@ class DetailedCardViewController: UIViewController {
     private func configure() {
         self.titleField.text = taskTitle
         self.descriptionField.text = taskDescription
-        self.statusIcon.text = taskIsDone ? "✔️" : "🔲"
+        configureCheckbox()
         
         titleField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -64,6 +65,11 @@ class DetailedCardViewController: UIViewController {
         isEmpty ? (titleField.backgroundColor = .red) : (titleField.backgroundColor = .white)
     }
     
+    private func configureCheckbox() {
+        let text = taskIsDone ? "✔️" : "🔲"
+        self.checkBoxButton.setTitle(text, for: .normal)
+    }
+    
     private func configureDeleteButton() {
         let configuration = UIImage.SymbolConfiguration(pointSize: 25)
         let image = UIImage(systemName: "trash", withConfiguration: configuration)
@@ -75,7 +81,7 @@ class DetailedCardViewController: UIViewController {
     
     @IBAction func onDeleteButton(_ sender: Any) {
         guard let deletionDate = preciseDate else { return }
-        delegate?.deleteTask(preciseDate: deletionDate)
+        delegate?.onDeleteTask(preciseDate: deletionDate)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -83,12 +89,18 @@ class DetailedCardViewController: UIViewController {
         
     }
     
+    @IBAction func onCheckboxTap(_ sender: UIButton) {
+        guard let preciseDate = preciseDate else { return }
+        taskIsDone.toggle()
+        configureCheckbox()
+        delegate?.onCheckBoxTap(taskIsDone: taskIsDone, preciseDate: preciseDate)
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.cardWillClose(taskTitle: titleField.text,
                                 taskDescription: descriptionField.text,
-                                taskIsDone: statusIcon.text == "✔️" ? true : false,
+                                taskIsDone: taskIsDone,
                                 taskPresiceDate: preciseDate)
     }
 }
