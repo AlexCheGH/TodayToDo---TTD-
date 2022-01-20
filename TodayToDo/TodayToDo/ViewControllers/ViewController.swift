@@ -79,6 +79,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cellHeight
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            taskManager.removeEntry(index: indexPath.row)
+            let indexPath = IndexPath(item: indexPath.row, section: indexPath.section)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        default:
+            Void()
+        }
+    }
+    
     //MARK: Header configuration
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tableViewHeaderId) as! ToDoTableHeaderView
