@@ -110,6 +110,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: SettingTappedProtocol
 extension ViewController: SettingsTappedProtocol {
     func onSettingsTap() {
+        
+        print(taskManager.userTasks)
+        
     }
 }
 
@@ -151,6 +154,7 @@ extension ViewController: DetailedCardViewProtocol {
     
     func onDeleteTask(preciseDate: String) {
         taskManager.removeEntry(for: preciseDate)
+        print(taskManager.userTasks)
         tableView.reloadData()
     }
     
@@ -161,6 +165,8 @@ extension ViewController: DetailedCardViewProtocol {
                                       description: description,
                                       taskIsDone: taskIsDone,
                                       preciseDate: preciseDate)
+            
+            tableView.reloadData()
         }
     }
 }

@@ -24,6 +24,8 @@ class DetailedCardViewController: UIViewController {
     
     var delegate: DetailedCardViewProtocol?
     
+    //if false - the closed card will call for cardWillClose(), true - the task will be deleted. Deleting the value will prevent the database from processing deleted cell, as it'll be re-creating itself.
+    private var isDeleted = false
     
     var taskTitle: String?
     var taskDescription: String?
@@ -81,6 +83,7 @@ class DetailedCardViewController: UIViewController {
     
     @IBAction func onDeleteButton(_ sender: Any) {
         guard let deletionDate = preciseDate else { return }
+        isDeleted = true //ensures the database will delete the task
         delegate?.onDeleteTask(preciseDate: deletionDate)
         self.dismiss(animated: true, completion: nil)
     }
@@ -98,10 +101,12 @@ class DetailedCardViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        delegate?.cardWillClose(taskTitle: titleField.text,
-                                taskDescription: descriptionField.text,
-                                taskIsDone: taskIsDone,
-                                taskPresiceDate: preciseDate)
+        if !isDeleted {
+            delegate?.cardWillClose(taskTitle: titleField.text,
+                                    taskDescription: descriptionField.text,
+                                    taskIsDone: taskIsDone,
+                                    taskPresiceDate: preciseDate)
+        }
     }
 }
 
@@ -112,7 +117,7 @@ extension DetailedCardViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let _ = textField.text else { return false }
-    
+        
         textField.resignFirstResponder()
         return true
     }
