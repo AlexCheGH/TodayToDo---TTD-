@@ -81,12 +81,17 @@ struct TaskManager {
         validateTask(task: task) ? saveEntry() : Void()
     }
     
-    /// Removes task for the specific date
-    mutating func removeEntry(for preciseDate: String) {
-        let task = getTask(preciseTaskDate: preciseDate)
-        let index = tasks.firstIndex(of: task)
+    /// Removes task for the specific date or index
+    mutating func removeEntry(for preciseDate: String? = nil, index: Int? = nil) {
         
-        context.delete(tasks[index!])
+        if let index = index {
+            context.delete(tasks[index])
+        }
+        if let preciseDate = preciseDate {
+            let task = getTask(preciseTaskDate: preciseDate)
+            let index = tasks.firstIndex(of: task)
+            context.delete(tasks[index!])
+        }
         saveEntry()
     }
     
