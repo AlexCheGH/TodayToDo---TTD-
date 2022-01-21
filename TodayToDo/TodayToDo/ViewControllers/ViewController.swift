@@ -82,9 +82,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            taskManager.removeEntry(index: indexPath.row)
             let indexPath = IndexPath(item: indexPath.row, section: indexPath.section)
+            taskManager.removeEntry(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         default:
             Void()
         }
@@ -164,9 +165,14 @@ extension ViewController: DetailedCardViewProtocol {
     }
     
     func onDeleteTask(preciseDate: String) {
-        taskManager.removeEntry(for: preciseDate)
-        print(taskManager.userTasks)
-        tableView.reloadData()
+        let task = taskManager.getTask(preciseTaskDate: preciseDate)
+        let index = taskManager.userTasks.firstIndex(of: task)
+//        needs to be !nil for its not to crash the app once a user tries to delete an empty page
+        guard let index = index else { return }
+        let indexPath = IndexPath(item: index, section: 0)
+        taskManager.removeEntry(index: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .middle)
+        
     }
     
     func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
@@ -177,7 +183,13 @@ extension ViewController: DetailedCardViewProtocol {
                                       taskIsDone: taskIsDone,
                                       preciseDate: preciseDate)
             
-            tableView.reloadData()
+            let task = taskManager.getTask(preciseTaskDate: preciseDate)
+            let index = taskManager.userTasks.firstIndex(of: task)
+            guard let index = index else { return }
+            
+            let indexPath = IndexPath(item: index, section: 0)
+            
+            tableView.insertRows(at: [indexPath], with: .middle)
         }
     }
 }
