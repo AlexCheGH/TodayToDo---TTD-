@@ -114,25 +114,4 @@ struct TaskManager {
         }
         return true
     }
-    
-//    func getIndexPathforItem(preciseDate: String? = nil, index: Int? = nil, section: Int = 0) -> IndexPath {
-//        var task = Task()
-//        var indexPath = IndexPath()
-//
-//        if let preciseDate = preciseDate {
-//            task = getTask(preciseTaskDate: preciseDate)
-//            let index = tasks.firstIndex(of: task)
-//
-//            guard let index = index else { return indexPath }
-//            indexPath = IndexPath(item: index, section: section)
-//        }
-//
-//        if let index = index {
-//            indexPath = IndexPath(item: index, section: section)
-//        }
-//
-//        return indexPath
-//    }
-    
 }
-    //сделать валидацию полей в детайлед вью контроллере, чтобы оно не крашило апп при создании мусорного таска
