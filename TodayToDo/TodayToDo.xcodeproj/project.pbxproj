@@ -28,6 +28,7 @@
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
 		50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */; };
+		50FE57A7279C98DB00A9345C /* TableView + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
 		50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewControllerHandler.swift; sourceTree = "<group>"; };
+		50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				502353852790AF3E0003DC85 /* View Controller+Utilities */,
+				50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
 				5023537D278B44670003DC85 /* Task Manager.swift in Sources */,
 				50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */,
+				50FE57A7279C98DB00A9345C /* TableView + Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ class DetailedCardViewController: UIViewController {
     
     var delegate: DetailedCardViewProtocol?
     
-    var viewControllerHandler = DetailedViewControllerHandler()
+    var handler = DetailedViewControllerHandler()
     private var buttonSubscriber: AnyCancellable?
     private var titleFieldSubscriber: AnyCancellable?
     private var statusImageSubscriber: AnyCancellable?
@@ -33,19 +33,18 @@ class DetailedCardViewController: UIViewController {
         setupStatusLabelSubscriber()
     }
     
-    
     ///Takes values to render the DetailedViewController
-    func configureTaskFields(taskTitle: String?, taskDescription: String?, taskStatus: Bool, preciseDate: String) {
-        viewControllerHandler.title = taskTitle
-        viewControllerHandler.description = taskDescription
-        viewControllerHandler.isDone = taskStatus
-        viewControllerHandler.preciseDate = preciseDate
+    func configureTaskFields(taskTitle: String?, taskDescription: String?, taskStatus: Bool, preciseDate: String, isNewTask: Bool) {
+        handler.title = taskTitle
+        handler.description = taskDescription
+        handler.isDone = taskStatus
+        handler.preciseDate = preciseDate
+        handler.isNewTask = isNewTask
     }
-    
     
     //MARK: Setting-up subscribers
    private func setupTittleFieldSubscriber() {
-        titleFieldSubscriber = viewControllerHandler.isTitleEmpty
+        titleFieldSubscriber = handler.isTitleEmpty
             .receive(on: RunLoop.main)
             .sink(receiveValue: { isEmpty in
                 self.highlightTitleField(isEmpty: isEmpty)
@@ -53,13 +52,13 @@ class DetailedCardViewController: UIViewController {
     }
     
    private func setupButtonSibscriber() {
-        buttonSubscriber = viewControllerHandler.isValidToSave
+        buttonSubscriber = handler.isValidToSave
             .receive(on: RunLoop.main)
             .assign(to: \.isHidden, on: saveButton)
     }
     
    private func setupStatusLabelSubscriber() {
-        statusImageSubscriber = viewControllerHandler.statusImage
+        statusImageSubscriber = handler.statusImage
             .receive(on: RunLoop.main)
             .sink(receiveValue: { text in
                 self.checkBoxButton.setTitle(text, for: .normal)
@@ -76,11 +75,11 @@ class DetailedCardViewController: UIViewController {
     
     private func configureTitleTextField() {
         titleField.delegate = self
-        self.titleField.text = viewControllerHandler.title
+        self.titleField.text = handler.title
     }
     
     private func configureDescriptionTextField() {
-        self.descriptionField.text = viewControllerHandler.description
+        self.descriptionField.text = handler.description
     }
     
     private func configureDeleteButton() {
@@ -104,23 +103,52 @@ class DetailedCardViewController: UIViewController {
         }
     }
     
-    @IBAction func onDeleteButton(_ sender: Any) {
-        viewControllerHandler.isValidToSave.sink { isEmpty in
+    private func presentAlert() {
+        let alert = UIAlertController(title: "Delete task?", message: "Are you sure you want to delete the task?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func deleteButtonAction() {
+        handler.isValidToSave.sink { [self] isEmpty in
             if isEmpty {
                 self.dismiss(animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to discard the task?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
+            } else if !isEmpty && handler.isNewTask {
+                presentAlert()
+            } else if (!isEmpty && !handler.isNewTask) || (isEmpty && !handler.isNewTask) {
+                guard let date = handler.preciseDate else { return }
+                delegate?.deleteTask(preciseDate: date)
+                dismiss(animated: true, completion: nil)
             }
         }
     }
     
-    @IBAction func onCheckboxTap(_ sender: UIButton) {
-        viewControllerHandler.isDone.toggle()
+    private func saveButtonAction() {
+        delegate?.saveTask(taskTitle: handler.title,
+                           taskDescription: handler.description,
+                           taskIsDone: handler.isDone,
+                           taskPresiceDate: handler.preciseDate)
+        handler.isNewTask = false
+    }
+    
+    private func checkboxButtonAction() {
+        handler.isDone.toggle()
+    }
+    
+    @IBAction func onButtonTap(_ sender: UIButton) {
+        switch sender {
+        case deleteButton:
+            deleteButtonAction()
+        case checkBoxButton:
+            checkboxButtonAction()
+        case saveButton:
+            saveButtonAction()
+        default:
+            Void()
+        }
     }
 }
 
@@ -137,10 +165,10 @@ extension DetailedCardViewController: UITextFieldDelegate {
         
         switch textField {
         case titleField:
-            viewControllerHandler.title = text
+            handler.title = text
             return true
         case descriptionField:
-            viewControllerHandler.description = text
+            handler.description = text
             return true
         default:
             return false

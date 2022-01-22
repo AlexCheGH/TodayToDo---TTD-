@@ -77,7 +77,7 @@
                                     <imageReference key="image" image="trash" catalog="system" symbolScale="default"/>
                                 </state>
                                 <connections>
-                                    <action selector="onDeleteButton:" destination="Fl4-ls-NR5" eventType="touchUpInside" id="Wgl-Q0-AzJ"/>
+                                    <action selector="onButtonTap:" destination="Fl4-ls-NR5" eventType="touchUpInside" id="eb1-fD-UbD"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yMO-1s-qMB">
@@ -93,7 +93,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="🔲"/>
                                 <connections>
-                                    <action selector="onCheckboxTap:" destination="Fl4-ls-NR5" eventType="touchUpInside" id="Ngx-CB-eoC"/>
+                                    <action selector="onButtonTap:" destination="Fl4-ls-NR5" eventType="touchUpInside" id="One-qK-qIs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9Q-9u-SU3">
@@ -103,6 +103,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="Fl4-ls-NR5" eventType="touchUpInside" id="m6L-g5-2xa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MsB-qt-OWp"/>

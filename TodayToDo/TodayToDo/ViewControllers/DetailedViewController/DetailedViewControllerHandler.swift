@@ -10,21 +10,16 @@ import Combine
 
 
 protocol DetailedCardViewProtocol {
-    
-    //  func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?)
-    func onDeleteTask(preciseDate: String)
-    func onCheckBoxTap(taskIsDone: Bool, preciseDate: String)
+    func saveTask(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?)
+    func deleteTask(preciseDate: String)
 }
-
-
-
 
 class DetailedViewControllerHandler: ObservableObject {
     @Published var title: String?
     @Published var description: String?
     @Published var isDone: Bool = false
     @Published var preciseDate: String?
-  
+    @Published var isNewTask: Bool = true
     
     var statusImage: AnyPublisher <String, Never> {
         return Publishers.CombineLatest($isDone, $description)
@@ -52,6 +47,4 @@ class DetailedViewControllerHandler: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-    
-    
 }

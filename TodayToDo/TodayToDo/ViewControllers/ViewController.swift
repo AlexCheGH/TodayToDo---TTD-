@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(taskManager.userTasks)
         setupTableView()
     }
     
@@ -47,10 +47,11 @@ class ViewController: UIViewController {
             viewController.configureTaskFields(taskTitle: (task.taskTitle as! String),
                                                taskDescription: (task.taskDescription as! String),
                                                taskStatus: task.taskIsDone as! Bool,
-                                               preciseDate: (task.tasksDate as! String))
+                                               preciseDate: (task.tasksDate as! String),
+                                               isNewTask: false)
         } else {
             let date = DateManager().preciseDate
-            viewController.viewControllerHandler.preciseDate = date
+            viewController.handler.preciseDate = date
         }
         return viewController
     }
@@ -85,7 +86,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let indexPath = IndexPath(item: indexPath.row, section: indexPath.section)
             taskManager.removeEntry(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         default:
             Void()
         }
@@ -145,7 +145,6 @@ extension ViewController: ToDoCellProtocol {
                                   description: (task.taskDescription as! String),
                                   taskIsDone: taskIsDone,
                                   preciseDate: preciseDate)
-        
     }
     
     func cellLabelTapped(preciseDate: String) {
@@ -156,18 +155,11 @@ extension ViewController: ToDoCellProtocol {
 
 //MARK: DetailedCardViewProtocol
 extension ViewController: DetailedCardViewProtocol {
-    func onCheckBoxTap(taskIsDone: Bool, preciseDate: String) {
-        let task = taskManager.getTask(preciseTaskDate: preciseDate)
-        taskManager.createNewTask(title: task.taskTitle as! String,
-                                   description: (task.taskDescription as! String),
-                                   taskIsDone: taskIsDone,
-                                   preciseDate: preciseDate)
-    }
     
-    func onDeleteTask(preciseDate: String) {
+    func deleteTask(preciseDate: String) {
         let task = taskManager.getTask(preciseTaskDate: preciseDate)
         let index = taskManager.userTasks.firstIndex(of: task)
-//        needs to be !nil for its not to crash the app once a user tries to delete an empty page
+        
         guard let index = index else { return }
         let indexPath = IndexPath(item: index, section: 0)
         taskManager.removeEntry(index: indexPath.row)
@@ -175,21 +167,24 @@ extension ViewController: DetailedCardViewProtocol {
         
     }
     
-//    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
-//        if let title = taskTitle, let description = taskDescription {
-//            let preciseDate = taskPresiceDate ?? DateManager().preciseDate
-//            taskManager.createNewTask(title: title,
-//                                      description: description,
-//                                      taskIsDone: taskIsDone,
-//                                      preciseDate: preciseDate)
-//
-//            let task = taskManager.getTask(preciseTaskDate: preciseDate)
-//            let index = taskManager.userTasks.firstIndex(of: task)
-//            guard let index = index else { return }
-//
-//            let indexPath = IndexPath(item: index, section: 0)
-//
-//            tableView.insertRows(at: [indexPath], with: .middle)
-//        }
-//    }
+    func saveTask(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
+        if let title = taskTitle {
+            let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+            taskManager.createNewTask(title: title,
+                                      description: taskDescription,
+                                      taskIsDone: taskIsDone,
+                                      preciseDate: preciseDate)
+            
+            let task = taskManager.getTask(preciseTaskDate: preciseDate)
+            let index = taskManager.userTasks.firstIndex(of: task)
+            guard let index = index else { return }
+            
+            let indexPath = IndexPath(item: index, section: 0)
+            
+            if tableView.hasRowAtIndexPath(indexPath: indexPath) {
+                tableView.reloadRows(at: [indexPath], with: .middle)
+            }
+            else {  tableView.insertRows(at: [indexPath], with: .middle) }
+        }
+    }
 }
