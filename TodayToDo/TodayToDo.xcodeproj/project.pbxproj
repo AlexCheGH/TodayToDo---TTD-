@@ -27,6 +27,7 @@
 		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
+		50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
+		50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewControllerHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				500AAE7E2789930A006DBE04 /* ViewController.swift */,
-				500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */,
+				50C0DD89279C053900C10FC5 /* DetailedViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +197,15 @@
 				502353832790AF340003DC85 /* ViewControllerFactory.swift */,
 			);
 			path = "View Controller+Utilities";
+			sourceTree = "<group>";
+		};
+		50C0DD89279C053900C10FC5 /* DetailedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */,
+				50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */,
+			);
+			path = DetailedViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +296,7 @@
 				5023537F278B489B0003DC85 /* DateManager.swift in Sources */,
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
 				5023537D278B44670003DC85 /* Task Manager.swift in Sources */,
+				50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

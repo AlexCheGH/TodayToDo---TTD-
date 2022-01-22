@@ -84,9 +84,6 @@
                                 <rect key="frame" x="10" y="54" width="354" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="onTextFieldTap:" destination="Fl4-ls-NR5" eventType="editingDidEnd" id="Zne-ID-PX4"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yac-Qg-8F2">
                                 <rect key="frame" x="370" y="209" width="44" height="30"/>
@@ -99,11 +96,21 @@
                                     <action selector="onCheckboxTap:" destination="Fl4-ls-NR5" eventType="touchUpInside" id="Ngx-CB-eoC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9Q-9u-SU3">
+                                <rect key="frame" x="20" y="254" width="374" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="vkD-Wx-W7s"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MsB-qt-OWp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="MsB-qt-OWp" firstAttribute="trailing" secondItem="w9Q-9u-SU3" secondAttribute="trailing" constant="20" id="0e7-56-EHA"/>
                             <constraint firstItem="Yac-Qg-8F2" firstAttribute="top" secondItem="zNE-we-m9V" secondAttribute="bottom" constant="15" id="1ya-c5-cOY"/>
+                            <constraint firstItem="w9Q-9u-SU3" firstAttribute="top" secondItem="VX7-pH-OUI" secondAttribute="bottom" constant="15" id="8vm-4X-EuC"/>
                             <constraint firstItem="B4E-xN-X1X" firstAttribute="top" secondItem="MsB-qt-OWp" secondAttribute="top" constant="10" id="Atc-z2-Pr7"/>
                             <constraint firstItem="yMO-1s-qMB" firstAttribute="top" secondItem="MsB-qt-OWp" secondAttribute="top" constant="10" id="GAx-G0-T3e"/>
                             <constraint firstItem="VX7-pH-OUI" firstAttribute="leading" secondItem="MsB-qt-OWp" secondAttribute="leading" constant="10" id="HZd-23-H12"/>
@@ -113,6 +120,7 @@
                             <constraint firstItem="zNE-we-m9V" firstAttribute="leading" secondItem="MsB-qt-OWp" secondAttribute="leading" constant="10" id="Zdw-aA-z4c"/>
                             <constraint firstItem="zNE-we-m9V" firstAttribute="top" secondItem="yMO-1s-qMB" secondAttribute="bottom" constant="10" id="fct-Dh-r4q"/>
                             <constraint firstAttribute="trailing" secondItem="zNE-we-m9V" secondAttribute="trailing" constant="10" id="gQk-VL-cMX"/>
+                            <constraint firstItem="w9Q-9u-SU3" firstAttribute="leading" secondItem="MsB-qt-OWp" secondAttribute="leading" constant="20" id="mC3-DK-1q4"/>
                             <constraint firstItem="Yac-Qg-8F2" firstAttribute="trailing" secondItem="MsB-qt-OWp" secondAttribute="trailing" id="tBT-4t-Mrl"/>
                             <constraint firstItem="zNE-we-m9V" firstAttribute="top" secondItem="B4E-xN-X1X" secondAttribute="bottom" constant="10" id="wTC-uU-ZcJ"/>
                             <constraint firstItem="VX7-pH-OUI" firstAttribute="top" secondItem="zNE-we-m9V" secondAttribute="bottom" constant="15" id="xbL-hO-d0A"/>
@@ -122,6 +130,7 @@
                         <outlet property="checkBoxButton" destination="Yac-Qg-8F2" id="ZIa-Ix-m1k"/>
                         <outlet property="deleteButton" destination="B4E-xN-X1X" id="RA2-AC-EEe"/>
                         <outlet property="descriptionField" destination="zNE-we-m9V" id="fQM-ao-7Ii"/>
+                        <outlet property="saveButton" destination="w9Q-9u-SU3" id="UrP-Ok-qeS"/>
                         <outlet property="statusLabel" destination="VX7-pH-OUI" id="uGX-oB-Ge5"/>
                         <outlet property="titleField" destination="yMO-1s-qMB" id="nA1-yy-tee"/>
                     </connections>

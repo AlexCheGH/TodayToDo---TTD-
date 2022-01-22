@@ -50,7 +50,7 @@ class ViewController: UIViewController {
                                                preciseDate: (task.tasksDate as! String))
         } else {
             let date = DateManager().preciseDate
-            viewController.preciseDate = date
+            viewController.viewControllerHandler.preciseDate = date
         }
         return viewController
     }
@@ -175,21 +175,21 @@ extension ViewController: DetailedCardViewProtocol {
         
     }
     
-    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
-        if let title = taskTitle, let description = taskDescription {
-            let preciseDate = taskPresiceDate ?? DateManager().preciseDate
-            taskManager.createNewTask(title: title,
-                                      description: description,
-                                      taskIsDone: taskIsDone,
-                                      preciseDate: preciseDate)
-            
-            let task = taskManager.getTask(preciseTaskDate: preciseDate)
-            let index = taskManager.userTasks.firstIndex(of: task)
-            guard let index = index else { return }
-            
-            let indexPath = IndexPath(item: index, section: 0)
-            
-            tableView.insertRows(at: [indexPath], with: .middle)
-        }
-    }
+//    func cardWillClose(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
+//        if let title = taskTitle, let description = taskDescription {
+//            let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+//            taskManager.createNewTask(title: title,
+//                                      description: description,
+//                                      taskIsDone: taskIsDone,
+//                                      preciseDate: preciseDate)
+//
+//            let task = taskManager.getTask(preciseTaskDate: preciseDate)
+//            let index = taskManager.userTasks.firstIndex(of: task)
+//            guard let index = index else { return }
+//
+//            let indexPath = IndexPath(item: index, section: 0)
+//
+//            tableView.insertRows(at: [indexPath], with: .middle)
+//        }
+//    }
 }
