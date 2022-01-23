@@ -180,7 +180,7 @@ extension ViewController: DetailedCardViewProtocol {
             guard let index = index else { return }
             
             let indexPath = IndexPath(item: index, section: 0)
-            
+            //if task exists - edits the row, otherwise adds a new one
             if tableView.hasRowAtIndexPath(indexPath: indexPath) {
                 tableView.reloadRows(at: [indexPath], with: .middle)
             }

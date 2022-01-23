@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  TodayToDo
+
+  Created by Alex Chekushkin on 1/23/22.
+  
+*/
+
+//Deletion texts
+"delete_task" = "Delete task?";
+"delete_task_confirmation" = "Are you sure you want to delete the task?";
+
+// Choices
+"yes" = "Yes";
+"no" = "No";
+"cancel" = "Cancel";
+
+//Button Label
+"save" = "Save";
+"status" = "Status";
