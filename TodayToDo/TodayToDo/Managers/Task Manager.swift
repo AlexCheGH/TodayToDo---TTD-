@@ -21,7 +21,15 @@ struct TaskManager {
     }
     
     private mutating func loadTasks() {
-        do { self.tasks = try context.fetch(Task.fetchRequest() ) as [Task] }
+        do { self.tasks = try context.fetch(Task.fetchRequest() ) as [Task]
+            self.tasks = tasks.filter{ task in
+                if let date = task.tasksDate as? String {
+                    return task.tasksDate as! String == date
+                } else {
+                    return false
+                }
+            }
+        }
         catch { print("An error occured when trying to fetch tasks.") }
     }
     

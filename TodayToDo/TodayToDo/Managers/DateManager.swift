@@ -23,4 +23,12 @@ class DateManager {
         dateFormatter.dateFormat = preciseDateFormat
         return dateFormatter.string(from: date)
     }
+    
+    func compareDates(preciseDate: String) -> Bool {
+        dateFormatter.dateFormat = preciseDateFormat
+        let dateToCompare = dateFormatter.date(from: preciseDate)!
+        dateFormatter.dateFormat = compactDateFormat
+        
+        return dateFormatter.string(from: dateToCompare) == compactDate
+    }
 }
