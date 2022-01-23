@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "VX7-pH-OUI"; */
+"VX7-pH-OUI.text" = "Status";
+
+/* Class = "UIButton"; configuration.title = "🔲"; ObjectID = "Yac-Qg-8F2"; */
+"Yac-Qg-8F2.configuration.title" = "🔲";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Yac-Qg-8F2"; */
+"Yac-Qg-8F2.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Button"; ObjectID = "w9Q-9u-SU3"; */
+"w9Q-9u-SU3.configuration.title" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "w9Q-9u-SU3"; */
+"w9Q-9u-SU3.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Description"; ObjectID = "zNE-we-m9V"; */
+"zNE-we-m9V.placeholder" = "Description";

@@ -73,6 +73,10 @@ class DetailedCardViewController: UIViewController {
         configureSaveButton()
     }
     
+    private func configureStatusLabel() {
+        statusLabel.text = Localization.Label.status
+    }
+    
     private func configureTitleTextField() {
         titleField.delegate = self
         self.titleField.text = handler.title
@@ -92,7 +96,7 @@ class DetailedCardViewController: UIViewController {
     }
     
     private func configureSaveButton() {
-        saveButton.setTitle("Save", for: .normal)
+        saveButton.setTitle(Localization.Label.save, for: .normal)
     }
     
     private func highlightTitleField(isEmpty: Bool) {
@@ -104,9 +108,9 @@ class DetailedCardViewController: UIViewController {
     }
     
     private func presentAlert() {
-        let alert = UIAlertController(title: "Delete task?", message: "Are you sure you want to delete the task?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+        let alert = UIAlertController(title: Localization.Delete.deleteTask, message: Localization.Delete.deleteTaskConfirmation, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localization.UserChoice.cancel, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Localization.UserChoice.yes, style: .destructive, handler: { _ in
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)

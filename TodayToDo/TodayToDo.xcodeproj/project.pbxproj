@@ -27,6 +27,8 @@
 		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
+		50926965279D7C47008C2942 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50926967279D7C47008C2942 /* Localizable.strings */; };
+		5092696C279D7D61008C2942 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5092696B279D7D61008C2942 /* Localization.swift */; };
 		50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */; };
 		50FE57A7279C98DB00A9345C /* TableView + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,11 @@
 		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
+		50926966279D7C47008C2942 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50926968279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		50926969279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5092696A279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5092696B279D7D61008C2942 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewControllerHandler.swift; sourceTree = "<group>"; };
 		50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +95,7 @@
 		500AAE792789930A006DBE04 /* TodayToDo */ = {
 			isa = PBXGroup;
 			children = (
+				50926964279D7C31008C2942 /* Localization */,
 				500AAE7A2789930A006DBE04 /* AppDelegate.swift */,
 				500AAE7C2789930A006DBE04 /* SceneDelegate.swift */,
 				502353802790AF060003DC85 /* Utilities */,
@@ -202,6 +210,15 @@
 			path = "View Controller+Utilities";
 			sourceTree = "<group>";
 		};
+		50926964279D7C31008C2942 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				50926967279D7C47008C2942 /* Localizable.strings */,
+				5092696B279D7D61008C2942 /* Localization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		50C0DD89279C053900C10FC5 /* DetailedViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +270,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 500AAE6E2789930A006DBE04;
 			productRefGroup = 500AAE782789930A006DBE04 /* Products */;
@@ -270,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				500AAE8A2789930B006DBE04 /* LaunchScreen.storyboard in Resources */,
+				50926965279D7C47008C2942 /* Localizable.strings in Resources */,
 				500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */,
 				500AAE872789930B006DBE04 /* Assets.xcassets in Resources */,
 				500AAE822789930A006DBE04 /* Main.storyboard in Resources */,
@@ -298,6 +317,7 @@
 				50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */,
 				5023537F278B489B0003DC85 /* DateManager.swift in Sources */,
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
+				5092696C279D7D61008C2942 /* Localization.swift in Sources */,
 				5023537D278B44670003DC85 /* Task Manager.swift in Sources */,
 				50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */,
 				50FE57A7279C98DB00A9345C /* TableView + Utilities.swift in Sources */,
@@ -311,6 +331,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				500AAE812789930A006DBE04 /* Base */,
+				50926968279D7C8C008C2942 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -319,8 +340,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				500AAE892789930B006DBE04 /* Base */,
+				50926969279D7C8C008C2942 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		50926967279D7C47008C2942 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50926966279D7C47008C2942 /* en */,
+				5092696A279D7C8C008C2942 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -330,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -391,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -455,6 +488,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -484,6 +518,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
