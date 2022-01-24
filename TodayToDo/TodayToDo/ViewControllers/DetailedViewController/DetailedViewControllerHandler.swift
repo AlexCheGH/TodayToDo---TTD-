@@ -31,9 +31,12 @@ class DetailedViewControllerHandler: ObservableObject {
     
     var isValidToSave: AnyPublisher <Bool, Never> {
         return Publishers.CombineLatest($title, $description)
-            .map{ title, _ in
-                guard let title = title else { return true }
-                return (title.isEmpty && title == "")
+            .map{ title, description in
+                if (title != nil && !title!.isEmpty) || (description != nil && !description!.isEmpty) {
+                    return false
+                } else {
+                    return true
+                }
             }
             .eraseToAnyPublisher()
     }

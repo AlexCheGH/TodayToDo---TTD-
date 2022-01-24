@@ -168,9 +168,9 @@ extension ViewController: DetailedCardViewProtocol {
     }
     
     func saveTask(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
-        if let title = taskTitle {
+//        if let title = taskTitle {
             let preciseDate = taskPresiceDate ?? DateManager().preciseDate
-            taskManager.createNewTask(title: title,
+        taskManager.createNewTask(title: taskTitle ?? "",
                                       description: taskDescription,
                                       taskIsDone: taskIsDone,
                                       preciseDate: preciseDate)
@@ -185,6 +185,6 @@ extension ViewController: DetailedCardViewProtocol {
                 tableView.reloadRows(at: [indexPath], with: .middle)
             }
             else {  tableView.insertRows(at: [indexPath], with: .middle) }
-        }
+//        }
     }
 }

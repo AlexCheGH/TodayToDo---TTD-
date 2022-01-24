@@ -84,6 +84,7 @@ class DetailedCardViewController: UIViewController {
     
     private func configureDescriptionTextField() {
         self.descriptionField.text = handler.description
+        self.descriptionField.delegate = self
     }
     
     private func configureDeleteButton() {
