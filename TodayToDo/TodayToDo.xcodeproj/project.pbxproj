@@ -134,8 +134,7 @@
 			children = (
 				500AAEA02789EDA9006DBE04 /* DetailedCardView */,
 				500AAE9B27899F05006DBE04 /* ToDoTableViewCell */,
-				500AAE9C2789B183006DBE04 /* ToDoTableHeaderView.swift */,
-				5023538627935E650003DC85 /* ToDoTableFooterView.swift */,
+				50DD272027A482A300DCD595 /* ToDoTableHeaderFooterView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +225,15 @@
 				50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */,
 			);
 			path = DetailedViewController;
+			sourceTree = "<group>";
+		};
+		50DD272027A482A300DCD595 /* ToDoTableHeaderFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				500AAE9C2789B183006DBE04 /* ToDoTableHeaderView.swift */,
+				5023538627935E650003DC85 /* ToDoTableFooterView.swift */,
+			);
+			path = ToDoTableHeaderFooterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

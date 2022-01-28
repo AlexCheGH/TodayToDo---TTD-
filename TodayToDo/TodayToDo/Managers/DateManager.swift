@@ -24,7 +24,7 @@ class DateManager {
         return dateFormatter.string(from: date)
     }
     
-    func compareDates(preciseDate: String) -> Bool {
+    func isDateToday(preciseDate: String) -> Bool {
         dateFormatter.dateFormat = preciseDateFormat
         let dateToCompare = dateFormatter.date(from: preciseDate)!
         dateFormatter.dateFormat = compactDateFormat
