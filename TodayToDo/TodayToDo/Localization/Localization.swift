@@ -25,4 +25,9 @@ struct Localization {
         static let status = NSLocalizedString("status", comment: "")
     }
     
+    struct Widget {
+        static let widgetTitle = NSLocalizedString("todayToDoWidget", comment: "")
+        static let widgetDescription = NSLocalizedString("widgetDescription", comment: "")
+    }
+    
 }
