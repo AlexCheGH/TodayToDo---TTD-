@@ -27,11 +27,47 @@
 		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
+		50544B1D27A722CE00A77E6A /* WidgetTaskDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */; };
+		50544B2027A7295F00A77E6A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1F27A7295F00A77E6A /* Provider.swift */; };
+		50734A7327A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
+		50734A7427A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
 		50926965279D7C47008C2942 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50926967279D7C47008C2942 /* Localizable.strings */; };
 		5092696C279D7D61008C2942 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5092696B279D7D61008C2942 /* Localization.swift */; };
 		50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */; };
+		50DD272827A4835800DCD595 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50DD272727A4835800DCD595 /* WidgetKit.framework */; };
+		50DD272A27A4835800DCD595 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50DD272927A4835800DCD595 /* SwiftUI.framework */; };
+		50DD272D27A4835800DCD595 /* TodayToDoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD272C27A4835800DCD595 /* TodayToDoWidget.swift */; };
+		50DD273027A4835900DCD595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DD272F27A4835900DCD595 /* Assets.xcassets */; };
+		50DD273227A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 50DD272E27A4835800DCD595 /* TodayToDoWidget.intentdefinition */; };
+		50DD273327A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 50DD272E27A4835800DCD595 /* TodayToDoWidget.intentdefinition */; };
+		50DD273627A4835900DCD595 /* TodayToDoWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 50DD272527A4835800DCD595 /* TodayToDoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50DD273B27A483BF00DCD595 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5092696B279D7D61008C2942 /* Localization.swift */; };
 		50FE57A7279C98DB00A9345C /* TableView + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50DD273427A4835900DCD595 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 500AAE6F2789930A006DBE04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50DD272427A4835800DCD595;
+			remoteInfo = TodayToDoWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50DD273A27A4835900DCD595 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50DD273627A4835900DCD595 /* TodayToDoWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		500AAE772789930A006DBE04 /* TodayToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,12 +92,24 @@
 		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
+		50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTaskDataProvider.swift; sourceTree = "<group>"; };
+		50544B1F27A7295F00A77E6A /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		50734A7027A70D93009B3A70 /* TodayToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDo.entitlements; sourceTree = "<group>"; };
+		50734A7127A70DE8009B3A70 /* TodayToDoWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDoWidgetExtension.entitlements; sourceTree = "<group>"; };
+		50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppGroup.swift; sourceTree = "<group>"; };
 		50926966279D7C47008C2942 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50926968279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		50926969279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5092696A279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5092696B279D7D61008C2942 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewControllerHandler.swift; sourceTree = "<group>"; };
+		50DD272527A4835800DCD595 /* TodayToDoWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayToDoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		50DD272727A4835800DCD595 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		50DD272927A4835800DCD595 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		50DD272C27A4835800DCD595 /* TodayToDoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayToDoWidget.swift; sourceTree = "<group>"; };
+		50DD272E27A4835800DCD595 /* TodayToDoWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = TodayToDoWidget.intentdefinition; sourceTree = "<group>"; };
+		50DD272F27A4835900DCD595 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50DD273127A4835900DCD595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50FE57A6279C98DB00A9345C /* TableView + Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,13 +121,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50DD272227A4835800DCD595 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50DD272A27A4835800DCD595 /* SwiftUI.framework in Frameworks */,
+				50DD272827A4835800DCD595 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		500AAE6E2789930A006DBE04 = {
 			isa = PBXGroup;
 			children = (
+				50734A7127A70DE8009B3A70 /* TodayToDoWidgetExtension.entitlements */,
+				50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */,
 				500AAE792789930A006DBE04 /* TodayToDo */,
+				50DD272B27A4835800DCD595 /* TodayToDoWidget */,
+				50DD272627A4835800DCD595 /* Frameworks */,
 				500AAE782789930A006DBE04 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				500AAE772789930A006DBE04 /* TodayToDo.app */,
+				50DD272527A4835800DCD595 /* TodayToDoWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +157,7 @@
 		500AAE792789930A006DBE04 /* TodayToDo */ = {
 			isa = PBXGroup;
 			children = (
+				50734A7027A70D93009B3A70 /* TodayToDo.entitlements */,
 				50926964279D7C31008C2942 /* Localization */,
 				500AAE7A2789930A006DBE04 /* AppDelegate.swift */,
 				500AAE7C2789930A006DBE04 /* SceneDelegate.swift */,
@@ -134,8 +197,7 @@
 			children = (
 				500AAEA02789EDA9006DBE04 /* DetailedCardView */,
 				500AAE9B27899F05006DBE04 /* ToDoTableViewCell */,
-				500AAE9C2789B183006DBE04 /* ToDoTableHeaderView.swift */,
-				5023538627935E650003DC85 /* ToDoTableFooterView.swift */,
+				50DD272027A482A300DCD595 /* ToDoTableHeaderFooterView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +290,37 @@
 			path = DetailedViewController;
 			sourceTree = "<group>";
 		};
+		50DD272027A482A300DCD595 /* ToDoTableHeaderFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				500AAE9C2789B183006DBE04 /* ToDoTableHeaderView.swift */,
+				5023538627935E650003DC85 /* ToDoTableFooterView.swift */,
+			);
+			path = ToDoTableHeaderFooterView;
+			sourceTree = "<group>";
+		};
+		50DD272627A4835800DCD595 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50DD272727A4835800DCD595 /* WidgetKit.framework */,
+				50DD272927A4835800DCD595 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50DD272B27A4835800DCD595 /* TodayToDoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				50DD272C27A4835800DCD595 /* TodayToDoWidget.swift */,
+				50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */,
+				50544B1F27A7295F00A77E6A /* Provider.swift */,
+				50DD272E27A4835800DCD595 /* TodayToDoWidget.intentdefinition */,
+				50DD272F27A4835900DCD595 /* Assets.xcassets */,
+				50DD273127A4835900DCD595 /* Info.plist */,
+			);
+			path = TodayToDoWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,18 +328,37 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 500AAE8E2789930B006DBE04 /* Build configuration list for PBXNativeTarget "TodayToDo" */;
 			buildPhases = (
+				500AAE752789930A006DBE04 /* Resources */,
 				500AAE732789930A006DBE04 /* Sources */,
 				500AAE742789930A006DBE04 /* Frameworks */,
-				500AAE752789930A006DBE04 /* Resources */,
+				50DD273A27A4835900DCD595 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50DD273527A4835900DCD595 /* PBXTargetDependency */,
 			);
 			name = TodayToDo;
 			productName = TodayToDo;
 			productReference = 500AAE772789930A006DBE04 /* TodayToDo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		50DD272427A4835800DCD595 /* TodayToDoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50DD273727A4835900DCD595 /* Build configuration list for PBXNativeTarget "TodayToDoWidgetExtension" */;
+			buildPhases = (
+				50DD272127A4835800DCD595 /* Sources */,
+				50DD272227A4835800DCD595 /* Frameworks */,
+				50DD272327A4835800DCD595 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayToDoWidgetExtension;
+			productName = TodayToDoWidgetExtension;
+			productReference = 50DD272527A4835800DCD595 /* TodayToDoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -259,6 +371,9 @@
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					500AAE762789930A006DBE04 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					50DD272427A4835800DCD595 = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
@@ -278,6 +393,7 @@
 			projectRoot = "";
 			targets = (
 				500AAE762789930A006DBE04 /* TodayToDo */,
+				50DD272427A4835800DCD595 /* TodayToDoWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -296,6 +412,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50DD272327A4835800DCD595 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50DD273027A4835900DCD595 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -307,6 +431,7 @@
 				500AAE7F2789930A006DBE04 /* ViewController.swift in Sources */,
 				500AAE852789930A006DBE04 /* TodayToDo.xcdatamodeld in Sources */,
 				5023537A278B16590003DC85 /* Weather.swift in Sources */,
+				50DD273327A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */,
 				50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */,
 				502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */,
 				500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */,
@@ -317,6 +442,7 @@
 				50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */,
 				5023537F278B489B0003DC85 /* DateManager.swift in Sources */,
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
+				50734A7327A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */,
 				5092696C279D7D61008C2942 /* Localization.swift in Sources */,
 				5023537D278B44670003DC85 /* Task Manager.swift in Sources */,
 				50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */,
@@ -324,7 +450,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50DD272127A4835800DCD595 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50544B1D27A722CE00A77E6A /* WidgetTaskDataProvider.swift in Sources */,
+				50DD273227A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */,
+				50DD272D27A4835800DCD595 /* TodayToDoWidget.swift in Sources */,
+				50DD273B27A483BF00DCD595 /* Localization.swift in Sources */,
+				50544B2027A7295F00A77E6A /* Provider.swift in Sources */,
+				50734A7427A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50DD273527A4835900DCD595 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50DD272427A4835800DCD595 /* TodayToDoWidgetExtension */;
+			targetProxy = 50DD273427A4835900DCD595 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		500AAE802789930A006DBE04 /* Main.storyboard */ = {
@@ -478,8 +625,10 @@
 		500AAE8F2789930B006DBE04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TodayToDo/TodayToDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HUYT8H6334;
@@ -508,8 +657,10 @@
 		500AAE902789930B006DBE04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TodayToDo/TodayToDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HUYT8H6334;
@@ -535,6 +686,62 @@
 			};
 			name = Release;
 		};
+		50DD273827A4835900DCD595 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TodayToDoWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HUYT8H6334;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodayToDoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TodayToDoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AlexChekushkin.TodayToDo.TodayToDoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50DD273927A4835900DCD595 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TodayToDoWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HUYT8H6334;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodayToDoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TodayToDoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AlexChekushkin.TodayToDo.TodayToDoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -552,6 +759,15 @@
 			buildConfigurations = (
 				500AAE8F2789930B006DBE04 /* Debug */,
 				500AAE902789930B006DBE04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50DD273727A4835900DCD595 /* Build configuration list for PBXNativeTarget "TodayToDoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50DD273827A4835900DCD595 /* Debug */,
+				50DD273927A4835900DCD595 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

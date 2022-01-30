@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 struct TaskManager {
     
@@ -14,7 +15,20 @@ struct TaskManager {
     
     private var tasks: [Task] = [] //source of truth
     
+    private let dateManager = DateManager()
+    private let userDefaults = TodayTodoUserDefaults()
+    
     var userTasks: [Task] { get { tasks } }
+    var allTodayTasks: Int { get { tasks.count } }
+    var todayCompletedTasks: Int {
+        get { tasks.filter{ task in
+            if let taskIsDone = task.taskIsDone as? Bool {
+                return taskIsDone
+            }
+            else { return false }
+        }.count
+        }
+    }
     
     init() {
         self.loadTasks()
@@ -24,13 +38,15 @@ struct TaskManager {
         do { self.tasks = try context.fetch(Task.fetchRequest() ) as [Task]
             self.tasks = tasks.filter{ task in
                 if let date = task.tasksDate as? String {
-                    return task.tasksDate as! String == date
+                    return dateManager.isDateToday(preciseDate: date)
                 } else {
                     return false
                 }
             }
         }
         catch { print("An error occured when trying to fetch tasks.") }
+        
+        self.updateUserDefaultsTasks()
     }
     
     
@@ -40,6 +56,12 @@ struct TaskManager {
             self.loadTasks()
         }
         catch { print("An error occured when trying to save the task.") }
+    }
+    
+    //Uploads the relevant data to UserDefaults to use in widget
+    private func updateUserDefaultsTasks() {
+        self.userDefaults.updateTaskStat(type: .completedTodayTasks, value: self.todayCompletedTasks)
+        self.userDefaults.updateTaskStat(type: .allTodayTasks, value: allTodayTasks)
     }
     
     /// Gets a task to populate UIView/UICell
@@ -61,7 +83,7 @@ struct TaskManager {
                       taskIsDone: taskIsDone,
                       preciseDate: preciseDate)
         } else {
-            let date = DateManager().preciseDate
+            let date = dateManager.preciseDate
             addNewEntry(title: title,
                         description: description,
                         taskIsDone: taskIsDone,

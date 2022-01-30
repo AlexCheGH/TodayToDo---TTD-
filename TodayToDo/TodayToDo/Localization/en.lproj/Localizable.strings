@@ -18,3 +18,7 @@
 //Button Label
 "save" = "Save";
 "status" = "Status";
+
+//Widget
+"todayToDoWidget" = "TodayToDo Widget";
+"widgetDescription" = "Your tasks done for the day";
