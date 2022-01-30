@@ -11,14 +11,12 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     
-    private let dummyEnrty = TaskEntry(date: Date(), totalTasks: 10, tasksCompleted: 6, configuration: ConfigurationIntent())
-    
     func placeholder(in context: Context) -> TaskEntry {
-        dummyEnrty
+        WidgetTaskDataProvider().dummyEnrty
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (TaskEntry) -> ()) {
-        completion(dummyEnrty)
+        completion(WidgetTaskDataProvider().dummyEnrty)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
@@ -29,8 +27,13 @@ struct Provider: IntentTimelineProvider {
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             
-//            let taskManager = TaskManager()
-            let entry = TaskEntry(date: entryDate, totalTasks: 1, tasksCompleted: 1, configuration: ConfigurationIntent())
+            let dataProvider = WidgetTaskDataProvider()
+            
+            let entry = TaskEntry(date: entryDate,
+                                  totalTasks: dataProvider.allTodayTasks,
+                                  tasksCompleted: dataProvider.todayCompletedTasks,
+                                  todayDate: dataProvider.todayDate,
+                                  configuration: ConfigurationIntent())
             
             entries.append(entry)
         }
@@ -45,7 +48,7 @@ struct TaskEntry: TimelineEntry {
     
     let totalTasks: Int
     let tasksCompleted: Int
-    let todayDate: String = "oij"
+    let todayDate: String
     let configuration: ConfigurationIntent
 }
 
@@ -53,7 +56,11 @@ struct TodayToDoWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.todayDate)
+        VStack {
+            Text(entry.todayDate)
+            Text("All tasks: \(entry.totalTasks)")
+            Text("Completed: \(entry.tasksCompleted)")
+        }
     }
 }
 
@@ -72,7 +79,7 @@ struct TodayToDoWidget: Widget {
 
 struct TodayToDoWidget_Previews: PreviewProvider {
     static var previews: some View {
-        TodayToDoWidgetEntryView(entry: TaskEntry(date: Date(), totalTasks: 5, tasksCompleted: 3, configuration: ConfigurationIntent()))
+        TodayToDoWidgetEntryView(entry: TaskEntry(date: Date(), totalTasks: 5, tasksCompleted: 3, todayDate: "March, 21, 2022", configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

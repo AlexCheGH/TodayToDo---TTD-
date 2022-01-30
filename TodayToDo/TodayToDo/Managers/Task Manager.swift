@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 struct TaskManager {
     
@@ -15,6 +16,7 @@ struct TaskManager {
     private var tasks: [Task] = [] //source of truth
     
     private let dateManager = DateManager()
+    private let userDefaults = TodayTodoUserDefaults()
     
     var userTasks: [Task] { get { tasks } }
     var allTodayTasks: Int { get { tasks.count } }
@@ -43,6 +45,8 @@ struct TaskManager {
             }
         }
         catch { print("An error occured when trying to fetch tasks.") }
+        
+        self.updateUserDefaultsTasks()
     }
     
     
@@ -52,6 +56,12 @@ struct TaskManager {
             self.loadTasks()
         }
         catch { print("An error occured when trying to save the task.") }
+    }
+    
+    //Uploads the relevant data to UserDefaults to use in widget
+    private func updateUserDefaultsTasks() {
+        self.userDefaults.updateTaskStat(type: .completedTodayTasks, value: self.todayCompletedTasks)
+        self.userDefaults.updateTaskStat(type: .allTodayTasks, value: allTodayTasks)
     }
     
     /// Gets a task to populate UIView/UICell
