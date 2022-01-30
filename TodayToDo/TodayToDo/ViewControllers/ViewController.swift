@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(taskManager.userTasks)
         setupTableView()
     }
     
@@ -122,8 +121,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: SettingTappedProtocol
 extension ViewController: SettingsTappedProtocol {
     func onSettingsTap() {
-        
-        print(taskManager.userTasks)
         
     }
 }

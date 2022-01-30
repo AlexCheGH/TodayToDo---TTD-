@@ -27,7 +27,8 @@
 		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
-		50544B1D27A722CE00A77E6A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1C27A722CE00A77E6A /* ViewModel.swift */; };
+		50544B1D27A722CE00A77E6A /* WidgetTaskDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */; };
+		50544B2027A7295F00A77E6A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1F27A7295F00A77E6A /* Provider.swift */; };
 		50734A7327A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
 		50734A7427A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
 		50926965279D7C47008C2942 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50926967279D7C47008C2942 /* Localizable.strings */; };
@@ -91,7 +92,8 @@
 		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
-		50544B1C27A722CE00A77E6A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTaskDataProvider.swift; sourceTree = "<group>"; };
+		50544B1F27A7295F00A77E6A /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		50734A7027A70D93009B3A70 /* TodayToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDo.entitlements; sourceTree = "<group>"; };
 		50734A7127A70DE8009B3A70 /* TodayToDoWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDoWidgetExtension.entitlements; sourceTree = "<group>"; };
 		50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppGroup.swift; sourceTree = "<group>"; };
@@ -310,7 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				50DD272C27A4835800DCD595 /* TodayToDoWidget.swift */,
-				50544B1C27A722CE00A77E6A /* ViewModel.swift */,
+				50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */,
+				50544B1F27A7295F00A77E6A /* Provider.swift */,
 				50DD272E27A4835800DCD595 /* TodayToDoWidget.intentdefinition */,
 				50DD272F27A4835900DCD595 /* Assets.xcassets */,
 				50DD273127A4835900DCD595 /* Info.plist */,
@@ -451,10 +454,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50544B1D27A722CE00A77E6A /* ViewModel.swift in Sources */,
+				50544B1D27A722CE00A77E6A /* WidgetTaskDataProvider.swift in Sources */,
 				50DD273227A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */,
 				50DD272D27A4835800DCD595 /* TodayToDoWidget.swift in Sources */,
 				50DD273B27A483BF00DCD595 /* Localization.swift in Sources */,
+				50544B2027A7295F00A77E6A /* Provider.swift in Sources */,
 				50734A7427A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
