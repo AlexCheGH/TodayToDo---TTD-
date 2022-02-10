@@ -39,11 +39,13 @@ class ToDoTableHeaderView: UITableViewHeaderFooterView {
         let image = UIImage(systemName: "gear", withConfiguration: configuration)
         settingsButton.setImage(image, for: .normal)
         settingsButton.tintColor = .black
-        
         settingsButton.addTarget(self, action: #selector(onSettingsTap), for: .touchUpInside)
         
+        temperature.font = UIFont.boldSystemFont(ofSize: 19)
         
-        //constraints
+        weatherImage.contentMode = .scaleAspectFit
+        
+        //MARK: - Constraints
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         temperature.translatesAutoresizingMaskIntoConstraints = false
         weatherImage.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +65,7 @@ class ToDoTableHeaderView: UITableViewHeaderFooterView {
             temperature.topAnchor.constraint(equalTo: dateLabel.bottomAnchor),
             temperature.heightAnchor.constraint(equalToConstant: 50),
             temperature.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            temperature.widthAnchor.constraint(equalToConstant: 30),
+            temperature.widthAnchor.constraint(equalToConstant: 50),
             
             weatherImage.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
             weatherImage.heightAnchor.constraint(equalToConstant: 30),

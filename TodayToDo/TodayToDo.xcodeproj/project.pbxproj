@@ -23,12 +23,14 @@
 		50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235373278B13A40003DC85 /* Task+CoreDataClass.swift */; };
 		50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */; };
 		5023537A278B16590003DC85 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235379278B16590003DC85 /* Weather.swift */; };
-		5023537D278B44670003DC85 /* Task Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537C278B44670003DC85 /* Task Manager.swift */; };
+		5023537D278B44670003DC85 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537C278B44670003DC85 /* TaskManager.swift */; };
 		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
 		50544B1D27A722CE00A77E6A /* WidgetTaskDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */; };
 		50544B2027A7295F00A77E6A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1F27A7295F00A77E6A /* Provider.swift */; };
+		50544B2227B4443500A77E6A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B2127B4443500A77E6A /* WeatherManager.swift */; };
+		50544B2427B444FE00A77E6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B2327B444FE00A77E6A /* NetworkManager.swift */; };
 		50734A7327A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
 		50734A7427A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
 		50926965279D7C47008C2942 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50926967279D7C47008C2942 /* Localizable.strings */; };
@@ -88,12 +90,14 @@
 		50235373278B13A40003DC85 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		50235379278B16590003DC85 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		5023537C278B44670003DC85 /* Task Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Manager.swift"; sourceTree = "<group>"; };
+		5023537C278B44670003DC85 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
 		50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTaskDataProvider.swift; sourceTree = "<group>"; };
 		50544B1F27A7295F00A77E6A /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		50544B2127B4443500A77E6A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		50544B2327B444FE00A77E6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		50734A7027A70D93009B3A70 /* TodayToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDo.entitlements; sourceTree = "<group>"; };
 		50734A7127A70DE8009B3A70 /* TodayToDoWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDoWidgetExtension.entitlements; sourceTree = "<group>"; };
 		50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppGroup.swift; sourceTree = "<group>"; };
@@ -249,7 +253,9 @@
 		5023537B278B44550003DC85 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				5023537C278B44670003DC85 /* Task Manager.swift */,
+				5023537C278B44670003DC85 /* TaskManager.swift */,
+				50544B2127B4443500A77E6A /* WeatherManager.swift */,
+				50544B2327B444FE00A77E6A /* NetworkManager.swift */,
 				5023537E278B489B0003DC85 /* DateManager.swift */,
 			);
 			path = Managers;
@@ -430,6 +436,8 @@
 				500AAEA92789EE98006DBE04 /* DetailedCardViewController.swift in Sources */,
 				500AAE7F2789930A006DBE04 /* ViewController.swift in Sources */,
 				500AAE852789930A006DBE04 /* TodayToDo.xcdatamodeld in Sources */,
+				50544B2227B4443500A77E6A /* WeatherManager.swift in Sources */,
+				50544B2427B444FE00A77E6A /* NetworkManager.swift in Sources */,
 				5023537A278B16590003DC85 /* Weather.swift in Sources */,
 				50DD273327A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */,
 				50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */,
@@ -444,7 +452,7 @@
 				500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */,
 				50734A7327A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */,
 				5092696C279D7D61008C2942 /* Localization.swift in Sources */,
-				5023537D278B44670003DC85 /* Task Manager.swift in Sources */,
+				5023537D278B44670003DC85 /* TaskManager.swift in Sources */,
 				50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */,
 				50FE57A7279C98DB00A9345C /* TableView + Utilities.swift in Sources */,
 			);

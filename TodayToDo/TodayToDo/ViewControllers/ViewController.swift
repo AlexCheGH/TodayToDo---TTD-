@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
     
@@ -20,6 +21,13 @@ class ViewController: UIViewController {
     private let footerHeaderHeight: CGFloat = 100
     
     private var taskManager = TaskManager()
+    
+    
+    let weatherManager = WeatherManager(coordinates: (55.22, 21.01))
+    
+    
+    var headerTemperatureSubscriber: AnyCancellable?
+    var headerImageSubscriber: AnyCancellable?
     
     
     override func viewDidLoad() {
@@ -94,10 +102,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tableViewHeaderId) as! ToDoTableHeaderView
         headerView.dateLabel.text = DateManager().compactDate
-        headerView.temperature.text = "26º"
         
-        let image = UIImage(named: "weatherIcon")
-        headerView.weatherImage.image = image
+        //subscribing to Temperature info
+        self.headerTemperatureSubscriber = weatherManager.currentWeather
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { text in
+                headerView.temperature.text = text
+            })
+        //subscribing to Weather Image
+        self.headerImageSubscriber = weatherManager.currentWeatherImage
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { image in
+                headerView.weatherImage.image = image
+            })
+        
         headerView.delegate = self
         
         return headerView
@@ -121,7 +139,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: SettingTappedProtocol
 extension ViewController: SettingsTappedProtocol {
     func onSettingsTap() {
-        
     }
 }
 
@@ -165,21 +182,21 @@ extension ViewController: DetailedCardViewProtocol {
     }
     
     func saveTask(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
-            let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+        let preciseDate = taskPresiceDate ?? DateManager().preciseDate
         taskManager.createNewTask(title: taskTitle ?? "",
-                                      description: taskDescription,
-                                      taskIsDone: taskIsDone,
-                                      preciseDate: preciseDate)
-            
-            let task = taskManager.getTask(preciseTaskDate: preciseDate)
-            let index = taskManager.userTasks.firstIndex(of: task)
-            guard let index = index else { return }
-            
-            let indexPath = IndexPath(item: index, section: 0)
-            //if task exists - edits the row, otherwise adds a new one
-            if tableView.hasRowAtIndexPath(indexPath: indexPath) {
-                tableView.reloadRows(at: [indexPath], with: .middle)
-            }
-            else {  tableView.insertRows(at: [indexPath], with: .middle) }
+                                  description: taskDescription,
+                                  taskIsDone: taskIsDone,
+                                  preciseDate: preciseDate)
+        
+        let task = taskManager.getTask(preciseTaskDate: preciseDate)
+        let index = taskManager.userTasks.firstIndex(of: task)
+        guard let index = index else { return }
+        
+        let indexPath = IndexPath(item: index, section: 0)
+        //if task exists - edits the row, otherwise adds a new one
+        if tableView.hasRowAtIndexPath(indexPath: indexPath) {
+            tableView.reloadRows(at: [indexPath], with: .middle)
+        }
+        else {  tableView.insertRows(at: [indexPath], with: .middle) }
     }
 }
