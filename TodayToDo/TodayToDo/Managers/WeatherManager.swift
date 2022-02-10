@@ -20,7 +20,6 @@ class WeatherManager: ObservableObject {
         self.weatherRequest.execute { weather in
             self.weather = weather
         }
-        
         //Won't be nil. The default parameter is .fahrenheit. Safe to force unwrap
         self.userPreference = TodayTodoUserDefaults().userWeatherFormatPreference
     }
@@ -35,6 +34,7 @@ class WeatherManager: ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    //Formats raw data in Kelvins to F or C
     private func processTemperature(of type: WeatherPreference, from value: Double) -> String {
         var temperature = 0.0
         let kelvinConst = 273.15
@@ -45,7 +45,7 @@ class WeatherManager: ObservableObject {
         case .celsius:
             temperature = value - kelvinConst
         }
-        return String(format: "%f", temperature) + "º"
+        return String(format: "%.1f", temperature) + "º"
     }
     
 }
