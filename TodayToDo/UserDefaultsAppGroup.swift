@@ -11,20 +11,45 @@ public enum UserDefaultsAppGroup: String {
     case main = "group.com.alexChekushkin.TodayToDo"
 }
 
-enum TasksDataDefaults: String {
+enum UserDefaultsKeys: String {
     case allTodayTasks = "allTodayTasks"
     case completedTodayTasks = "completedTodayTasks"
+    
+    case currentWeather = "currentWeather"
 }
 
+enum WeatherPreference: Int {
+    case fahrenheit = 0
+    case celsius = 1
+}
 
 //Exists to share the data from the main app to supplementary targets, like widget.
 struct TodayTodoUserDefaults {
     private static let userDefaults = UserDefaults(suiteName: UserDefaultsAppGroup.main.rawValue)
     
-    var userTodayCompletedTasks: Int { TodayTodoUserDefaults.userDefaults?.integer(forKey: TasksDataDefaults.completedTodayTasks.rawValue) ?? 0 }
-    var userAllTodayTasks: Int { TodayTodoUserDefaults.userDefaults?.integer(forKey: TasksDataDefaults.allTodayTasks.rawValue) ?? 0 }
+    //MARK: - Tasks
+    var userTodayCompletedTasks: Int {
+        let key = UserDefaultsKeys.completedTodayTasks.rawValue
+        return TodayTodoUserDefaults.userDefaults?.integer(forKey: key) ?? 0 }
     
-    func updateTaskStat(type: TasksDataDefaults, value: Int) {
+    var userAllTodayTasks: Int {
+        let key = UserDefaultsKeys.allTodayTasks.rawValue
+        return TodayTodoUserDefaults.userDefaults?.integer(forKey: key) ?? 0 }
+    
+    func updateTaskStat(type: UserDefaultsKeys, value: Int) {
         TodayTodoUserDefaults.userDefaults!.set(value, forKey: type.rawValue)
     }
+    
+    //MARK: - Weather
+    var userWeatherFormatPreference: WeatherPreference {
+        let key = UserDefaultsKeys.currentWeather.rawValue
+        let value = TodayTodoUserDefaults.userDefaults?.integer(forKey: key) ?? 0
+        return WeatherPreference(rawValue: value) ?? .fahrenheit
+    }
+    ///0 = fahrenheit, 1 = celsius
+    func updateWeatherPreference(value: Int) {
+        let key = UserDefaultsKeys.currentWeather.rawValue
+        TodayTodoUserDefaults.userDefaults?.set(value, forKey: key)
+    }
+    
 }
