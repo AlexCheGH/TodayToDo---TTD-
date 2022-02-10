@@ -7,19 +7,31 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class WeatherManager: ObservableObject {
     
     private let weatherRequest: WeatherRequest
+    private var weatherIcon: WeatherImageRequest?
     
     @Published private var weather: Weather?
     @Published private var userPreference: WeatherPreference?
+    @Published private var weatherIconImage: UIImage?
     
     init(coordinates: (Double, Double)) {
+        
+        //start the request to get weather data
         self.weatherRequest = WeatherRequest(coordinates: coordinates)
         self.weatherRequest.execute { weather in
             self.weather = weather
+            
+            //once data is received, we can initiate a request to get an image
+            self.weatherIcon = WeatherImageRequest(iconID: (weather?.weather?.first?.icon)!)
+            self.weatherIcon?.execute(withCompletion: { image in
+                self.weatherIconImage = image
+            })
         }
+        
         //Won't be nil. The default parameter is .fahrenheit. Safe to force unwrap
         self.userPreference = TodayTodoUserDefaults().userWeatherFormatPreference
     }
@@ -30,6 +42,14 @@ class WeatherManager: ObservableObject {
                 let temperature = weather?.main?.temp
                 guard let temperature = temperature else { return nil }
                 return self.processTemperature(of: preference!, from: temperature)
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    var currentWeatherImage: AnyPublisher <UIImage?, Never> {
+        return Publishers.CombineLatest($weather, $weatherIconImage)
+            .map{_, image in
+                return image
             }
             .eraseToAnyPublisher()
     }

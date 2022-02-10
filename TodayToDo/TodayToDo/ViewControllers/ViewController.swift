@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     let weatherManager = WeatherManager(coordinates: (55.22, 21.01))
     
     
-    var someSubscriber: AnyCancellable?
-    
+    var headerTemperatureSubscriber: AnyCancellable?
+    var headerImageSubscriber: AnyCancellable?
     
     
     override func viewDidLoad() {
@@ -104,14 +104,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.dateLabel.text = DateManager().compactDate
         
         //subscribing to Temperature info
-        self.someSubscriber = weatherManager.currentWeather
+        self.headerTemperatureSubscriber = weatherManager.currentWeather
             .receive(on: RunLoop.main)
             .sink(receiveValue: { text in
                 headerView.temperature.text = text
             })
+        //subscribing to Weather Image
+        self.headerImageSubscriber = weatherManager.currentWeatherImage
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { image in
+                headerView.weatherImage.image = image
+            })
         
-        let image = UIImage(named: "weatherIcon")
-        headerView.weatherImage.image = image
         headerView.delegate = self
         
         return headerView

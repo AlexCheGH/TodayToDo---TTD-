@@ -43,8 +43,9 @@ class ToDoTableHeaderView: UITableViewHeaderFooterView {
         
         temperature.font = UIFont.boldSystemFont(ofSize: 19)
         
+        weatherImage.contentMode = .scaleAspectFit
         
-        //constraints
+        //MARK: - Constraints
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         temperature.translatesAutoresizingMaskIntoConstraints = false
         weatherImage.translatesAutoresizingMaskIntoConstraints = false

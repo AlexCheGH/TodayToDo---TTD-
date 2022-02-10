@@ -10,8 +10,8 @@ import Foundation
 class Weather: Codable {
     let main: Main?
     let name: String?
-    /*let visibility: Int?
     let weather: [WeatherElement]?
+    /*let visibility: Int?
     let base: String?
     let coord: Coord?
     let wind: Wind?
@@ -22,11 +22,11 @@ class Weather: Codable {
     let cod: Int?
     */
 
-    init(main: Main?, name: String? /*weather: [WeatherElement]?, coord: Coord?, base: String?,  visibility: Int?, wind: Wind?, clouds: Clouds?, dt: Int?, sys: Sys?, timezone: Int?, id: Int?, cod: Int?*/) {
+    init(main: Main?, name: String?, weather: [WeatherElement]? /*coord: Coord?, base: String?,  visibility: Int?, wind: Wind?, clouds: Clouds?, dt: Int?, sys: Sys?, timezone: Int?, id: Int?, cod: Int?*/) {
         self.main = main
         self.name = name
-        /*self.coord = coord
         self.weather = weather
+        /*self.coord = coord
         self.base = base
         self.visibility = visibility
         self.wind = wind
@@ -100,7 +100,7 @@ class Main: Codable {
 } */
 
 // MARK: - WeatherElement
-/*class WeatherElement: Codable {
+class WeatherElement: Codable {
     let id: Int?
     let main, weatherDescription, icon: String?
 
@@ -116,7 +116,7 @@ class Main: Codable {
         self.weatherDescription = weatherDescription
         self.icon = icon
     }
-} */
+}
 
 // MARK: - Wind
 /* class Wind: Codable {
