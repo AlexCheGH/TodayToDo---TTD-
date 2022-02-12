@@ -22,16 +22,14 @@ class DetailedViewControllerHandler: ObservableObject {
     @Published var isNewTask: Bool = true
     
     var statusImage: AnyPublisher <String, Never> {
-        return Publishers.CombineLatest($isDone, $description)
-            .map{ isDone, _ in
-                return isDone ? "✔️" : "🔲"
-            }
+        return $isDone.share()
+            .map { return $0 ? "✔️" : "🔲" }
             .eraseToAnyPublisher()
     }
     
     var isValidToSave: AnyPublisher <Bool, Never> {
         return Publishers.CombineLatest($title, $description)
-            .map{ title, description in
+            .map { title, description in
                 if (title != nil && !title!.isEmpty) || (description != nil && !description!.isEmpty) {
                     return false
                 } else {
@@ -42,10 +40,9 @@ class DetailedViewControllerHandler: ObservableObject {
     }
     
     var isTitleEmpty: AnyPublisher <Bool, Never> {
-        return Publishers.CombineLatest($title, $description)
-            .map{ title, _ in
-                //false prevents title being highlighted on the initial open
-                guard let title = title else { return false }
+        return $title.share()
+            .map {
+                guard let title = $0 else { return false }
                 return title.isEmpty
             }
             .eraseToAnyPublisher()
