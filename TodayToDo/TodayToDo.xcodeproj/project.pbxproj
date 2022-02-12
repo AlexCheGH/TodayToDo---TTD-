@@ -33,6 +33,7 @@
 		50544B2427B444FE00A77E6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B2327B444FE00A77E6A /* NetworkManager.swift */; };
 		50734A7327A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
 		50734A7427A70F6F009B3A70 /* UserDefaultsAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */; };
+		50819B2527B7087000C945EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50819B2727B7087000C945EF /* InfoPlist.strings */; };
 		50926965279D7C47008C2942 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50926967279D7C47008C2942 /* Localizable.strings */; };
 		5092696C279D7D61008C2942 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5092696B279D7D61008C2942 /* Localization.swift */; };
 		50C0DD8B279C055100C10FC5 /* DetailedViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C0DD8A279C055100C10FC5 /* DetailedViewControllerHandler.swift */; };
@@ -101,6 +102,7 @@
 		50734A7027A70D93009B3A70 /* TodayToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDo.entitlements; sourceTree = "<group>"; };
 		50734A7127A70DE8009B3A70 /* TodayToDoWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayToDoWidgetExtension.entitlements; sourceTree = "<group>"; };
 		50734A7227A70EA6009B3A70 /* UserDefaultsAppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppGroup.swift; sourceTree = "<group>"; };
+		50819B2627B7087000C945EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50926966279D7C47008C2942 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50926968279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		50926969279D7C8C008C2942 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		50926964279D7C31008C2942 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				50819B2727B7087000C945EF /* InfoPlist.strings */,
 				50926967279D7C47008C2942 /* Localizable.strings */,
 				5092696B279D7D61008C2942 /* Localization.swift */,
 			);
@@ -410,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				500AAE8A2789930B006DBE04 /* LaunchScreen.storyboard in Resources */,
+				50819B2527B7087000C945EF /* InfoPlist.strings in Resources */,
 				50926965279D7C47008C2942 /* Localizable.strings in Resources */,
 				500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */,
 				500AAE872789930B006DBE04 /* Assets.xcassets in Resources */,
@@ -498,6 +502,14 @@
 				50926969279D7C8C008C2942 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		50819B2727B7087000C945EF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50819B2627B7087000C945EF /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		50926967279D7C47008C2942 /* Localizable.strings */ = {
@@ -642,6 +654,8 @@
 				DEVELOPMENT_TEAM = HUYT8H6334;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayToDo/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -674,6 +688,8 @@
 				DEVELOPMENT_TEAM = HUYT8H6334;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayToDo/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

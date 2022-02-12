@@ -9,53 +9,63 @@ import Foundation
 import Combine
 import UIKit
 
+
 class WeatherManager: ObservableObject {
-    
-    private let weatherRequest: WeatherRequest
-    private var weatherIcon: WeatherImageRequest?
+    private var weatherRequest: WeatherRequest?
+    private var weatherIconRequest: WeatherImageRequest?
     
     @Published private var weather: Weather?
     @Published private var userPreference: WeatherPreference?
     @Published private var weatherIconImage: UIImage?
+    @Published private var coodrinates: (Double, Double)?
     
-    init(coordinates: (Double, Double)) {
-        
-        //start the request to get weather data
-        self.weatherRequest = WeatherRequest(coordinates: coordinates)
-        self.weatherRequest.execute { weather in
-            self.weather = weather
-            
-            //once data is received, we can initiate a request to get an image
-            self.weatherIcon = WeatherImageRequest(iconID: (weather?.weather?.first?.icon)!)
-            self.weatherIcon?.execute(withCompletion: { image in
-                self.weatherIconImage = image
-            })
-        }
-        
+    init() {
         //Won't be nil. The default parameter is .fahrenheit. Safe to force unwrap
         self.userPreference = TodayTodoUserDefaults().userWeatherFormatPreference
     }
     
     var currentWeather: AnyPublisher <String?, Never> {
-        return Publishers.CombineLatest($weather, $userPreference)
-            .map{weather, preference in
+        return Publishers.CombineLatest3($weather, $userPreference, $coodrinates)
+            .map{weather, preference, _ in
                 let temperature = weather?.main?.temp
                 guard let temperature = temperature else { return nil }
-                return self.processTemperature(of: preference!, from: temperature)
+                return self.processedTemperature(of: preference!, from: temperature)
             }
             .eraseToAnyPublisher()
     }
     
     var currentWeatherImage: AnyPublisher <UIImage?, Never> {
-        return Publishers.CombineLatest($weather, $weatherIconImage)
-            .map{_, image in
-                return image
-            }
-            .eraseToAnyPublisher()
+        return $weatherIconImage.map{
+            return $0
+        }.eraseToAnyPublisher()
     }
     
+    
+    //MARK: - Network calls
+    func loadWeather(coordinates: (Double, Double)) {
+        //Start the request to get weather data
+        self.weatherRequest = WeatherRequest(coordinates: coordinates)
+        self.weatherRequest?.execute { weather in
+            self.weather = weather
+            
+            //Once data is received, we can initiate a request to get an image
+            if let icon = weather?.weather?.first?.icon {
+                self.loadImage(icon: icon)
+            }
+        }
+    }
+    
+    //Loads the weather status icon. Weather-Model provides us the image name
+    private func loadImage(icon: String) {
+        self.weatherIconRequest = WeatherImageRequest(iconID: icon)
+        self.weatherIconRequest?.execute(withCompletion: { image in
+            self.weatherIconImage = image
+        })
+    }
+    
+    //MARK: - Data formatters
     //Formats raw data in Kelvins to F or C
-    private func processTemperature(of type: WeatherPreference, from value: Double) -> String {
+    private func processedTemperature(of type: WeatherPreference, from value: Double) -> String {
         var temperature = 0.0
         let kelvinConst = 273.15
         
@@ -67,5 +77,4 @@ class WeatherManager: ObservableObject {
         }
         return String(format: "%.1f", temperature) + "º"
     }
-    
 }

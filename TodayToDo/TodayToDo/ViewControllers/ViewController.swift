@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import CoreLocation
 
 class ViewController: UIViewController {
     
@@ -20,19 +21,27 @@ class ViewController: UIViewController {
     private let cellHeight: CGFloat = 50
     private let footerHeaderHeight: CGFloat = 100
     
+    private let weatherManager = WeatherManager()
     private var taskManager = TaskManager()
+    private var locationManager: CLLocationManager?
     
-    
-    let weatherManager = WeatherManager(coordinates: (55.22, 21.01))
-    
-    
-    var headerTemperatureSubscriber: AnyCancellable?
-    var headerImageSubscriber: AnyCancellable?
+    private var headerTemperatureSubscriber: AnyCancellable?
+    private var headerImageSubscriber: AnyCancellable?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        
+        
+        setupLocationManager()
+    }
+    
+    private func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.requestLocation()
     }
     
     //MARK: UITableView setup
@@ -198,5 +207,21 @@ extension ViewController: DetailedCardViewProtocol {
             tableView.reloadRows(at: [indexPath], with: .middle)
         }
         else {  tableView.insertRows(at: [indexPath], with: .middle) }
+    }
+}
+
+//MARK: LocationManagerDelegate
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        let lat = location.latitude
+        let lon = location.longitude
+        //Asks manager to start networkRequest once the location is active
+        weatherManager.loadWeather(coordinates: (lat, lon))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
     }
 }
