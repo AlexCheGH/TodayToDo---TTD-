@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     private let weatherManager = WeatherManager()
     private var taskManager = TaskManager()
     private var locationManager: CLLocationManager?
+//    private var settingManager: SettingsManager()
     
     private var headerTemperatureSubscriber: AnyCancellable?
     private var headerImageSubscriber: AnyCancellable?
@@ -148,6 +149,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: SettingTappedProtocol
 extension ViewController: SettingsTappedProtocol {
     func onSettingsTap() {
+        let viewController = ViewControllerFactory.viewController(for: .settings)
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 }
 

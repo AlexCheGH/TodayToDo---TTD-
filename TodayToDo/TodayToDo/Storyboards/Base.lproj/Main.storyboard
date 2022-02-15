@@ -142,6 +142,57 @@
             </objects>
             <point key="canvasLocation" x="1001" y="82"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="taR-64-bfc">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="Eb7-1D-dK2" customClass="SettingsViewController" customModule="TodayToDo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ak5-RK-mIu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKr-tx-Orf">
+                                <rect key="frame" x="20" y="64" width="71" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hBC-eK-BwO">
+                                <rect key="frame" x="15" y="110" width="384" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cup-oA-C2O">
+                                <rect key="frame" x="285.5" y="64" width="108.5" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="button">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="Eb7-1D-dK2" eventType="touchUpInside" id="Qle-SX-Mcr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XtG-Vi-qyY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KKr-tx-Orf" firstAttribute="leading" secondItem="XtG-Vi-qyY" secondAttribute="leading" constant="20" id="Gmb-Qu-rti"/>
+                            <constraint firstItem="Cup-oA-C2O" firstAttribute="top" secondItem="XtG-Vi-qyY" secondAttribute="top" constant="20" id="PIo-Th-mfO"/>
+                            <constraint firstItem="XtG-Vi-qyY" firstAttribute="trailing" secondItem="hBC-eK-BwO" secondAttribute="trailing" constant="15" id="U5n-sY-jOh"/>
+                            <constraint firstItem="XtG-Vi-qyY" firstAttribute="trailing" secondItem="Cup-oA-C2O" secondAttribute="trailing" constant="20" id="d4V-sd-djp"/>
+                            <constraint firstItem="KKr-tx-Orf" firstAttribute="top" secondItem="XtG-Vi-qyY" secondAttribute="top" constant="20" id="dIp-f8-Fjq"/>
+                            <constraint firstItem="hBC-eK-BwO" firstAttribute="top" secondItem="KKr-tx-Orf" secondAttribute="bottom" constant="10" id="gIH-mW-cu1"/>
+                            <constraint firstItem="hBC-eK-BwO" firstAttribute="leading" secondItem="XtG-Vi-qyY" secondAttribute="leading" constant="15" id="tXF-jv-M0d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="Cup-oA-C2O" id="Qwz-QL-9ST"/>
+                        <outlet property="tableView" destination="hBC-eK-BwO" id="0dC-HE-xOX"/>
+                        <outlet property="titleLabel" destination="KKr-tx-Orf" id="SJl-at-3Of"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xdD-ZZ-q3d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1891" y="82"/>
+        </scene>
     </scenes>
     <resources>
         <image name="trash" catalog="system" width="121" height="128"/>

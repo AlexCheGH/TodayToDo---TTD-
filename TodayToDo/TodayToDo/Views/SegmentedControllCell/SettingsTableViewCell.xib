@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsTableViewCell" customModule="TodayToDo" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="367" id="KGk-i7-Jjw" customClass="SettingsTableViewCell" customModule="TodayToDo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="437" height="367"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="437" height="367"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ic0-ke-PLK">
+                        <rect key="frame" x="0.0" y="10" width="208" height="80"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hSf-gO-Vpy" userLabel="TopStackView">
+                                <rect key="frame" x="0.0" y="0.0" width="208" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQF-zH-bOx">
+                                        <rect key="frame" x="0.0" y="7.5" width="100" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EpO-6m-lCT">
+                                        <rect key="frame" x="108" y="2" width="100" height="32"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="onSegmentedControlTap:" destination="KGk-i7-Jjw" eventType="valueChanged" id="75B-Id-vdh"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="yLk-u9-CJ6"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="81R-fE-azP" userLabel="DatePickerStackView">
+                                <rect key="frame" x="0.0" y="45" width="208" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhg-38-Iuz">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Nkp-A0-Pi2">
+                                        <rect key="frame" x="108" y="0.0" width="100" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="rqS-5U-bM7"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="onDatePicker:" destination="KGk-i7-Jjw" eventType="valueChanged" id="I7P-zg-FkB"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="IT0-jv-x2q"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Ic0-ke-PLK" secondAttribute="bottom" constant="10" id="84d-aS-CcX"/>
+                    <constraint firstAttribute="trailing" secondItem="Ic0-ke-PLK" secondAttribute="trailing" id="G3s-zJ-8C2"/>
+                    <constraint firstItem="Ic0-ke-PLK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NFp-Rz-fsT"/>
+                    <constraint firstItem="Ic0-ke-PLK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nzm-2R-Wag"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="Yhg-38-Iuz" id="kjU-dA-933"/>
+                <outlet property="datePicker" destination="Nkp-A0-Pi2" id="k90-Ua-fsD"/>
+                <outlet property="datePickerStackView" destination="81R-fE-azP" id="raw-DJ-Mbm"/>
+                <outlet property="label" destination="XQF-zH-bOx" id="GPm-Fb-VH4"/>
+                <outlet property="segmentedControl" destination="EpO-6m-lCT" id="6YE-bo-D1Y"/>
+            </connections>
+            <point key="canvasLocation" x="228.2608695652174" y="190.51339285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

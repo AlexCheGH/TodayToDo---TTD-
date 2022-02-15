@@ -18,7 +18,20 @@
 //Button Label
 "save" = "Save";
 "status" = "Status";
+"done" = "Done";
 
 //Widget
 "todayToDoWidget" = "TodayToDo Widget";
 "widgetDescription" = "Your tasks done for the day";
+
+//Settings
+"settings" = "Settings";
+"temperature_format" = "Temperature format";
+"temp_celc" = "Celsius";
+"temp_fahr" = "Fahrenheit";
+"temp_celc_compact" = "ºC";
+"temp_fahr_compact" = "ºF";
+"push_messages" = "Push messages";
+"on" = "On";
+"off" = "Off";
+"select_time" = "Get stats at";

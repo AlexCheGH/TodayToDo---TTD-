@@ -23,13 +23,15 @@ enum TypeOfViewController {
 
 extension TypeOfViewController {
     func storyboardRepresentation() -> StoryboardRepresentation {
+        let mainStoryboard = "Main"
+        
         switch self {
         case .main:
-            return StoryboardRepresentation(bundle: nil, storyboardName: "Main", viewControllerID: "ViewController")
+            return StoryboardRepresentation(bundle: nil, storyboardName: mainStoryboard, viewControllerID: ViewControllerID.main.rawValue)
         case .detailedCard:
-            return StoryboardRepresentation(bundle: nil, storyboardName: "Main", viewControllerID: "DetailedCardViewController")
+            return StoryboardRepresentation(bundle: nil, storyboardName: mainStoryboard, viewControllerID: ViewControllerID.detailedCard.rawValue)
         case .settings:
-            return StoryboardRepresentation(bundle: nil, storyboardName: "", viewControllerID: "")
+            return StoryboardRepresentation(bundle: nil, storyboardName: mainStoryboard, viewControllerID: ViewControllerID.settings.rawValue)
         }
     }
 }
@@ -42,4 +44,10 @@ class ViewControllerFactory: NSObject {
         
         return viewController
     }
+}
+
+fileprivate enum ViewControllerID: String {
+    case main = "ViewController"
+    case detailedCard = "DetailedCardViewController"
+    case settings = "SettingsViewController"
 }
