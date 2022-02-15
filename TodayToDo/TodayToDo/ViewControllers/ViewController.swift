@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     private let weatherManager = WeatherManager()
     private var taskManager = TaskManager()
     private var locationManager: CLLocationManager?
-//    private var settingManager: SettingsManager()
     
     private var headerTemperatureSubscriber: AnyCancellable?
     private var headerImageSubscriber: AnyCancellable?
@@ -33,9 +32,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
-        
         setupLocationManager()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //Once settings are closed checks if weather preferences have been changed.
+        weatherManager.updateUserPreference()
     }
     
     private func setupLocationManager() {

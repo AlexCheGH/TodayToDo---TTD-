@@ -19,8 +19,8 @@ enum UserDefaultsKeys: String {
 }
 
 enum WeatherPreference: Int {
-    case fahrenheit = 0
-    case celsius = 1
+    case celsius = 0
+    case fahrenheit = 1
 }
 
 //Exists to share the data from the main app to supplementary targets, like widget.
@@ -46,7 +46,7 @@ struct TodayTodoUserDefaults {
         let value = TodayTodoUserDefaults.userDefaults?.integer(forKey: key) ?? 0
         return WeatherPreference(rawValue: value) ?? .fahrenheit
     }
-    ///0 = fahrenheit, 1 = celsius
+    ///0 = celsius, 1 = fahrenheit
     func updateWeatherPreference(value: Int) {
         let key = UserDefaultsKeys.currentWeather.rawValue
         TodayTodoUserDefaults.userDefaults?.set(value, forKey: key)
