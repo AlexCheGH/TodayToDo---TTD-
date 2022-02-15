@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingsTableViewCellProtocol {
-    func segmentedControlOption(value: Int)
+    func segmentedControlOption(value: Int, cellIndex: Int?)
     func dropDownHides(cellIndex: Int?)
     func onDatePickerElement(date: Date, cellIndex: Int?, cellType: SettingsViewCellType)
 }
@@ -65,7 +65,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     @IBAction func onSegmentedControlTap(_ sender: UISegmentedControl) {
-        delegate?.segmentedControlOption(value: sender.selectedSegmentIndex)
+        delegate?.segmentedControlOption(value: sender.selectedSegmentIndex, cellIndex: index)
         delegate?.dropDownHides(cellIndex: index)
     }
     

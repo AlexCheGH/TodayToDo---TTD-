@@ -40,6 +40,9 @@ class WeatherManager: ObservableObject {
         }.eraseToAnyPublisher()
     }
     
+    func updateUserPreference() {
+        self.userPreference = TodayTodoUserDefaults().userWeatherFormatPreference
+    }
     
     //MARK: - Network calls
     func loadWeather(coordinates: (Double, Double)) {

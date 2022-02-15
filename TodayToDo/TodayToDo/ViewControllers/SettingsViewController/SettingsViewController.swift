@@ -17,18 +17,15 @@ class SettingsViewController: UIViewController {
     private let tableViewCellID = "settingsTableViewCellID"
     
     private static let localization = Localization.Settings.self
-    
     private let titleText = localization.settingsTitle
     private let cellTitles = [localization.temperatureFormat,
                               localization.pushMessages]
-    
     private let weatherSegmentOptions = [localization.celsiusCompact,
-                                         localization.fahrenheitCompact
-    ]
+                                         localization.fahrenheitCompact]
     private let pushSegmentOptions = [localization.on,
-                                      localization.off
-    ]
+                                      localization.off]
     
+    private let userDefaults = TodayTodoUserDefaults()
     
     private var isDateViewPresented = true
     
@@ -93,14 +90,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath) as! SettingsTableViewCell
         
-        
+        //Row 0 = Weather preference
         if indexPath.row == 0 {
             cell.configureCell(labelText: cellTitles[0],
                                segment0Title: weatherSegmentOptions[0],
                                segment1Title: weatherSegmentOptions[1],
                                index: indexPath.row,
-                               togglerPosition: 0)
-        } else if indexPath.row == 1 {
+                               togglerPosition: userDefaults.userWeatherFormatPreference.rawValue)
+        }
+        //Row 1 = Local push message preference
+        else if indexPath.row == 1 {
             cell.configureCell(labelText: cellTitles[1],
                                segment0Title: pushSegmentOptions[0],
                                segment1Title: pushSegmentOptions[1],
@@ -121,8 +120,19 @@ extension SettingsViewController: SettingsTableViewCellProtocol {
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
-    func segmentedControlOption(value: Int) {
+    func segmentedControlOption(value: Int, cellIndex: Int?) {
         value == 0 ? (isDateViewPresented = true) : (isDateViewPresented = false)
+        
+        guard let cellIndex = cellIndex else { return }
+        switch cellIndex {
+        case 0:
+            userDefaults.updateWeatherPreference(value: value)
+            print(userDefaults.userWeatherFormatPreference.rawValue)
+        default:
+            return
+        }
+
+        
     }
     
     func onDatePickerElement(date: Date, cellIndex: Int?, cellType: SettingsViewCellType) {
