@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     private let weatherManager = WeatherManager()
     private var taskManager = TaskManager()
     private var locationManager: CLLocationManager?
+    private var notificationManager = LocalNotificationManager()
     
     private var headerTemperatureSubscriber: AnyCancellable?
     private var headerImageSubscriber: AnyCancellable?
@@ -33,12 +34,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupLocationManager()
+        setupNotificationManager()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //Once settings are closed checks if weather preferences have been changed.
         weatherManager.updateUserPreference()
+    }
+    
+    private func setupNotificationManager() {
+        notificationManager.userNotificationCenter.delegate = self
     }
     
     private func setupLocationManager() {
@@ -230,5 +236,16 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
+    }
+}
+
+extension ViewController: UNUserNotificationCenterDelegate {
+    //Handles push message window tap
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
     }
 }

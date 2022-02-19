@@ -14,8 +14,9 @@ public enum UserDefaultsAppGroup: String {
 enum UserDefaultsKeys: String {
     case allTodayTasks = "allTodayTasks"
     case completedTodayTasks = "completedTodayTasks"
-    
     case currentWeather = "currentWeather"
+    case daylyTaskStatTime = "daylyTaskStatTime"
+    case dailyStatsNotificationEnabled = "dailyStatsNotificationEnabled"
 }
 
 enum WeatherPreference: Int {
@@ -49,6 +50,29 @@ struct TodayTodoUserDefaults {
     ///0 = celsius, 1 = fahrenheit
     func updateWeatherPreference(value: Int) {
         let key = UserDefaultsKeys.currentWeather.rawValue
+        TodayTodoUserDefaults.userDefaults?.set(value, forKey: key)
+    }
+    
+    //MARK: - Local & Push notifications
+    var preferedNotificationTime: String? {
+        let key = UserDefaultsKeys.daylyTaskStatTime.rawValue
+        let value = TodayTodoUserDefaults.userDefaults?.string(forKey: key)
+        return value
+    }
+    
+    func updateNotificationTimePreference(stringDate: String) {
+        let key = UserDefaultsKeys.daylyTaskStatTime.rawValue
+        TodayTodoUserDefaults.userDefaults?.setValue(stringDate, forKey: key)
+    }
+    
+    var isDailyStatsNotificationEnabled: Int {
+        let key = UserDefaultsKeys.dailyStatsNotificationEnabled.rawValue
+        let value = TodayTodoUserDefaults.userDefaults?.integer(forKey: key) ?? 0
+        return value
+    }
+    ///0 = false, 1 = true
+    func updateDailyStatsNotificationPreference(value: Int) {
+        let key = UserDefaultsKeys.dailyStatsNotificationEnabled.rawValue
         TodayTodoUserDefaults.userDefaults?.set(value, forKey: key)
     }
     

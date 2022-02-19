@@ -44,4 +44,9 @@ struct Localization {
         static let selectTime = NSLocalizedString("select_time", comment: "")
     }
     
+    struct LocalNotifications {
+        static let tasksDoneTitle = NSLocalizedString("tasks_done_title", comment: "")
+        static let tasksDoneDescription = NSLocalizedString("tasks_done_description", comment: "")
+    }
+    
 }
