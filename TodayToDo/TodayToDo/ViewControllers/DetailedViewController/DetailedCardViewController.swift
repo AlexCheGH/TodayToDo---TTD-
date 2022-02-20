@@ -128,7 +128,7 @@ class DetailedCardViewController: UIViewController {
                 delegate?.deleteTask(preciseDate: date)
                 dismiss(animated: true, completion: nil)
             }
-        }
+        }.store(in: &handler.garbageCollector)//silences an error
     }
     
     private func saveButtonAction() {

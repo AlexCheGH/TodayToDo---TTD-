@@ -20,6 +20,7 @@ class DetailedViewControllerHandler: ObservableObject {
     @Published var isDone: Bool = false
     @Published var preciseDate: String?
     @Published var isNewTask: Bool = true
+    @Published var garbageCollector = Set<AnyCancellable>()//error silenser
     
     var statusImage: AnyPublisher <String, Never> {
         return $isDone.share()
