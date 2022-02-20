@@ -12,6 +12,11 @@ import NotificationCenter
 
 class LocalNotificationManager {
     
+    enum NotificationType: String {
+        case dailyStatistics = "dailyStatistics"
+        case taskReminder = "taskReminder"
+    }
+    
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     func requestNotificationAuthorization() {
@@ -68,13 +73,15 @@ class LocalNotificationManager {
                 print("Notification Error: ", error)
             }
         }
-        //https://programmingwithswift.com/how-to-send-local-notification-with-swift-5/
     }
     
-    enum NotificationType: String {
-        case dailyStatistics = "dailyStatistics"
-        case taskReminder = "taskReminder"
+    //notificationType serves as an ID for .dailyStatics case
+    func updateNotification(notificationType: NotificationType, task: Task? = nil) {
+        let center = UNUserNotificationCenter.current()
+        center.removeDeliveredNotifications(withIdentifiers: [notificationType.rawValue])
+        center.removePendingNotificationRequests(withIdentifiers: [notificationType.rawValue])
+        
+        
     }
-    
     
 }

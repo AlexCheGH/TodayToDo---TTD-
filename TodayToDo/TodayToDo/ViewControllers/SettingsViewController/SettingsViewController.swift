@@ -27,11 +27,6 @@ class SettingsViewController: UIViewController {
     
     private let notificationsManager = LocalNotificationManager()
     private let userDefaults = TodayTodoUserDefaults()
-    private var localNotificationDate: Date {
-        let dateString = userDefaults.preferedNotificationTime
-        return DateManager().transofrmToDate(string: dateString)
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,8 +102,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                                cellType: .withDatePicker,
                                index: 1,
                                togglerPosition: userDefaults.isDailyStatsNotificationEnabled,
-                               datePickerDate: localNotificationDate)
-            
+                               datePickerDate: DateManager().localNotificationTime)
         }
         cell.delegate = self
         return cell
@@ -123,7 +117,15 @@ extension SettingsViewController: SettingsTableViewCellProtocol {
             userDefaults.updateWeatherPreference(value: value)
         case 1:
             userDefaults.updateDailyStatsNotificationPreference(value: value)
-            value == 1 ? notificationsManager.requestNotificationAuthorization() : Void()
+            if value == 1 {
+                let dateComponent = DateManager().returnDateComponent(from: DateManager().localNotificationTime, with: .HHmmFormat)
+                notificationsManager.requestNotificationAuthorization()
+                notificationsManager.sendNotification(notificationType: .dailyStatistics, for: dateComponent)
+            } else {
+                //if toggler is inactive - kills the notitfication, resets saved notification time
+                notificationsManager.updateNotification(notificationType: .dailyStatistics)
+                userDefaults.updateNotificationTimePreference(stringDate: nil)
+            }
         default:
             return
         }
@@ -131,7 +133,6 @@ extension SettingsViewController: SettingsTableViewCellProtocol {
     
     func dropDownHides(cellIndex: Int?) {
         guard let index = cellIndex else { return }
-        print(userDefaults.isDailyStatsNotificationEnabled)
         if index == 1 {
             let indexPath = IndexPath(item: index, section: 0)
             tableView.reloadRows(at: [indexPath], with: .fade)
@@ -141,7 +142,7 @@ extension SettingsViewController: SettingsTableViewCellProtocol {
     func onDatePickerElement(date: Date, cellType: SettingsViewCellType) {
         switch cellType {
         case .withDatePicker:
-            let stringDate = DateManager().transformToString(date: date)
+            let stringDate = DateManager().transformToString(date: date, format: .HHmmFormat)
             guard let value = stringDate else { return }
             //Adds prefered stat to userDefaults as String
             userDefaults.updateNotificationTimePreference(stringDate: value)
@@ -151,7 +152,5 @@ extension SettingsViewController: SettingsTableViewCellProtocol {
         default:
             return
         }
-        
     }
-    
 }

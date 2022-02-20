@@ -43,7 +43,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     ///Main function to setup a cell. cellType decides whether DatePicker or other elements shoud be presented or not. Toggler position determines the deault toggler position, 0 = Off, 1 = On; 0 = C, 1 = F.
-    func configureCell(labelText: String, segment0Title: String, segment1Title: String, cellType: SettingsViewCellType = .withoutDatePicker, index: Int, togglerPosition: Int, datePickerDate: Date = Date()) {
+    func configureCell(labelText: String, segment0Title: String, segment1Title: String, cellType: SettingsViewCellType = .withoutDatePicker, index: Int, togglerPosition: Int, datePickerDate: Date? = nil) {
         
         label.text = labelText
         self.dateLabel.text = Localization.Settings.selectTime
@@ -63,7 +63,9 @@ class SettingsTableViewCell: UITableViewCell {
         segmentedControl.setTitle(segment0Title, forSegmentAt: 0)
         segmentedControl.setTitle(segment1Title, forSegmentAt: 1)
         
-        datePicker.date = datePickerDate
+        if let datePickerDate = datePickerDate {
+            datePicker.date = datePickerDate
+        }
     }
     
     @IBAction func onSegmentedControlTap(_ sender: UISegmentedControl) {

@@ -60,7 +60,7 @@ struct TodayTodoUserDefaults {
         return value
     }
     
-    func updateNotificationTimePreference(stringDate: String) {
+    func updateNotificationTimePreference(stringDate: String?) {
         let key = UserDefaultsKeys.daylyTaskStatTime.rawValue
         TodayTodoUserDefaults.userDefaults?.setValue(stringDate, forKey: key)
     }

@@ -83,7 +83,7 @@ struct TaskManager {
                       taskIsDone: taskIsDone,
                       preciseDate: preciseDate)
         } else {
-            let date = dateManager.preciseDate
+            let date = dateManager.currentPreciseDate
             addNewEntry(title: title,
                         description: description,
                         taskIsDone: taskIsDone,

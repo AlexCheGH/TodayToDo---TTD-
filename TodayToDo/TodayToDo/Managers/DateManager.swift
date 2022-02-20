@@ -9,31 +9,43 @@ import Foundation
 
 class DateManager {
     
-    private let date = Date()
-    private let dateFormatter = DateFormatter()
-    private static let compactDateFormat = "MMM d, yyyy"
-    private static let preciseDateFormat = "E, d MMM yyyy HH:mm:ss Z"
-    
-    var compactDate: String {
-        dateFormatter.dateFormat = DateManager.compactDateFormat
-        return dateFormatter.string(from: date)
+    enum DateFormats: String {
+        case MMMdyyyyFormat = "MMM d, yyyy"
+        case EdMMMyyyyHHmmssZFormat = "E, d MMM yyyy HH:mm:ss Z"
+        case HHmmFormat = "HH:mm"
     }
     
-    var preciseDate: String {
-        dateFormatter.dateFormat = DateManager.preciseDateFormat
-        return dateFormatter.string(from: date)
+    enum DefaultTimes: String {
+        case ninePM = "21:00"
+    }
+    
+    private let date = Date()
+    private let dateFormatter = DateFormatter()
+        
+    var currentCompactDate: String { transformToString(date: date, format: .MMMdyyyyFormat)! }
+    var currentPreciseDate: String { transformToString(date: date, format: .EdMMMyyyyHHmmssZFormat)! }
+    
+    var localNotificationTime: Date {
+        let dateString = TodayTodoUserDefaults().preferedNotificationTime
+        let date = DateManager().transofrmToDate(string: dateString, format: .HHmmFormat)
+        
+        guard let date = date else {
+            let date = DateManager().transofrmToDate(string: DateManager.DefaultTimes.ninePM.rawValue, format: .HHmmFormat)
+            return date!
+        }
+        return date
     }
     
     func isDateToday(preciseDate: String) -> Bool {
-        dateFormatter.dateFormat = DateManager.preciseDateFormat
+        dateFormatter.dateFormat = DateFormats.EdMMMyyyyHHmmssZFormat.rawValue
         let dateToCompare = dateFormatter.date(from: preciseDate)!
-        dateFormatter.dateFormat = DateManager.compactDateFormat
+        dateFormatter.dateFormat = DateFormats.MMMdyyyyFormat.rawValue
         
-        return dateFormatter.string(from: dateToCompare) == compactDate
+        return dateFormatter.string(from: dateToCompare) == currentCompactDate
     }
     
     
-    func returnDateComponent(from date: Date) -> DateComponents {
+    func returnDateComponent(from date: Date, with format: DateFormats = .EdMMMyyyyHHmmssZFormat) -> DateComponents {
         var calendar = Calendar.current
         
         if let timeZone = TimeZone(identifier: TimeZone.current.identifier) {
@@ -41,7 +53,7 @@ class DateManager {
         }
         guard let stringDate = self.transformToString(date: date) else { return DateComponents() }
         let formatter = DateFormatter()
-        formatter.dateFormat = DateManager.preciseDateFormat
+        formatter.dateFormat = format.rawValue
         
         let date = formatter.date(from: stringDate)
         guard let date = date else { return DateComponents() }
@@ -56,16 +68,16 @@ class DateManager {
         return dateComponent
     }
     
-    func transofrmToDate(string: String?, format: String = preciseDateFormat) -> Date {
+    func transofrmToDate(string: String?, format: DateFormats = .EdMMMyyyyHHmmssZFormat) -> Date? {
         let formatter = DateFormatter()
-        formatter.dateFormat = format
-        guard let string = string, let date = formatter.date(from: string) else { return Date() }
-        return date
+        formatter.dateFormat = format.rawValue
+        guard let string = string else { return nil }
+        return formatter.date(from: string)
     }
     
-    func transformToString(date: Date, format: String = preciseDateFormat) -> String? {
+    func transformToString(date: Date, format: DateFormats = .EdMMMyyyyHHmmssZFormat) -> String? {
         let formatter = DateFormatter()
-        formatter.dateFormat = format
+        formatter.dateFormat = format.rawValue
         return formatter.string(from: date)
     }
 }

@@ -76,7 +76,7 @@ class ViewController: UIViewController {
                                                preciseDate: (task.tasksDate as! String),
                                                isNewTask: false)
         } else {
-            let date = DateManager().preciseDate
+            let date = DateManager().currentPreciseDate
             viewController.handler.preciseDate = date
         }
         return viewController
@@ -120,7 +120,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: Header configuration
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tableViewHeaderId) as! ToDoTableHeaderView
-        headerView.dateLabel.text = DateManager().compactDate
+        headerView.dateLabel.text = DateManager().currentCompactDate
         
         //subscribing to Temperature info
         self.headerTemperatureSubscriber = weatherManager.currentWeather
@@ -204,7 +204,7 @@ extension ViewController: DetailedCardViewProtocol {
     }
     
     func saveTask(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
-        let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+        let preciseDate = taskPresiceDate ?? DateManager().currentPreciseDate
         taskManager.createNewTask(title: taskTitle ?? "",
                                   description: taskDescription,
                                   taskIsDone: taskIsDone,
