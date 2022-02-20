@@ -17,8 +17,6 @@
 		500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */; };
 		500AAE9A27899ED5006DBE04 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */; };
 		500AAE9D2789B183006DBE04 /* ToDoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAE9C2789B183006DBE04 /* ToDoTableHeaderView.swift */; };
-		500AAEA22789EDC8006DBE04 /* DetailedViewCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */; };
-		500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */; };
 		500AAEA92789EE98006DBE04 /* DetailedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */; };
 		50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235373278B13A40003DC85 /* Task+CoreDataClass.swift */; };
 		50235376278B14DE0003DC85 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */; };
@@ -89,8 +87,6 @@
 		500AAE9627899DEC006DBE04 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		500AAE9C2789B183006DBE04 /* ToDoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableHeaderView.swift; sourceTree = "<group>"; };
-		500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedViewCard.xib; sourceTree = "<group>"; };
-		500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewCard.swift; sourceTree = "<group>"; };
 		500AAEA72789EE98006DBE04 /* DetailedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCardViewController.swift; sourceTree = "<group>"; };
 		50235373278B13A40003DC85 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		50235375278B14DE0003DC85 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -211,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				50819B2B27B852B400C945EF /* SegmentedControllCell */,
-				500AAEA02789EDA9006DBE04 /* DetailedCardView */,
 				500AAE9B27899F05006DBE04 /* ToDoTableViewCell */,
 				50DD272027A482A300DCD595 /* ToDoTableHeaderFooterView */,
 			);
@@ -225,15 +220,6 @@
 				500AAE9927899ED5006DBE04 /* ToDoTableViewCell.swift */,
 			);
 			path = ToDoTableViewCell;
-			sourceTree = "<group>";
-		};
-		500AAEA02789EDA9006DBE04 /* DetailedCardView */ = {
-			isa = PBXGroup;
-			children = (
-				500AAEA12789EDC8006DBE04 /* DetailedViewCard.xib */,
-				500AAEA32789EDD7006DBE04 /* DetailedViewCard.swift */,
-			);
-			path = DetailedCardView;
 			sourceTree = "<group>";
 		};
 		50235372278B13940003DC85 /* Model */ = {
@@ -447,7 +433,6 @@
 				500AAE9727899DEC006DBE04 /* ToDoTableViewCell.xib in Resources */,
 				500AAE872789930B006DBE04 /* Assets.xcassets in Resources */,
 				500AAE822789930A006DBE04 /* Main.storyboard in Resources */,
-				500AAEA22789EDC8006DBE04 /* DetailedViewCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +461,6 @@
 				503D740727BDA09200C2FC96 /* LocalNotificationManager.swift in Sources */,
 				50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */,
 				502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */,
-				500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */,
 				5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */,
 				500AAE7B2789930A006DBE04 /* AppDelegate.swift in Sources */,
 				500AAE9D2789B183006DBE04 /* ToDoTableHeaderView.swift in Sources */,
