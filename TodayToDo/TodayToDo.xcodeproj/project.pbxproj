@@ -27,6 +27,7 @@
 		5023537F278B489B0003DC85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023537E278B489B0003DC85 /* DateManager.swift */; };
 		502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502353832790AF340003DC85 /* ViewControllerFactory.swift */; };
 		5023538727935E650003DC85 /* ToDoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023538627935E650003DC85 /* ToDoTableFooterView.swift */; };
+		503D740727BDA09200C2FC96 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D740627BDA09200C2FC96 /* LocalNotificationManager.swift */; };
 		50544B1D27A722CE00A77E6A /* WidgetTaskDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */; };
 		50544B2027A7295F00A77E6A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B1F27A7295F00A77E6A /* Provider.swift */; };
 		50544B2227B4443500A77E6A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50544B2127B4443500A77E6A /* WeatherManager.swift */; };
@@ -98,6 +99,7 @@
 		5023537E278B489B0003DC85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		502353832790AF340003DC85 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		5023538627935E650003DC85 /* ToDoTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableFooterView.swift; sourceTree = "<group>"; };
+		503D740627BDA09200C2FC96 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		50544B1C27A722CE00A77E6A /* WidgetTaskDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTaskDataProvider.swift; sourceTree = "<group>"; };
 		50544B1F27A7295F00A77E6A /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		50544B2127B4443500A77E6A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				50544B2127B4443500A77E6A /* WeatherManager.swift */,
 				50544B2327B444FE00A77E6A /* NetworkManager.swift */,
 				5023537E278B489B0003DC85 /* DateManager.swift */,
+				503D740627BDA09200C2FC96 /* LocalNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				50544B2427B444FE00A77E6A /* NetworkManager.swift in Sources */,
 				5023537A278B16590003DC85 /* Weather.swift in Sources */,
 				50DD273327A4835900DCD595 /* TodayToDoWidget.intentdefinition in Sources */,
+				503D740727BDA09200C2FC96 /* LocalNotificationManager.swift in Sources */,
 				50235374278B13A40003DC85 /* Task+CoreDataClass.swift in Sources */,
 				502353842790AF340003DC85 /* ViewControllerFactory.swift in Sources */,
 				500AAEA42789EDD7006DBE04 /* DetailedViewCard.swift in Sources */,

@@ -22,12 +22,11 @@ class SettingsViewController: UIViewController {
                               localization.pushMessages]
     private let weatherSegmentOptions = [localization.celsiusCompact,
                                          localization.fahrenheitCompact]
-    private let pushSegmentOptions = [localization.on,
-                                      localization.off]
+    private let pushSegmentOptions = [localization.off,
+                                      localization.on]
     
+    private let notificationsManager = LocalNotificationManager()
     private let userDefaults = TodayTodoUserDefaults()
-    
-    private var isDateViewPresented = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +61,6 @@ class SettingsViewController: UIViewController {
         tableView.reloadData()
         tableView.layoutIfNeeded()
         tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height).isActive = true
-        
-        
     }
     
     @IBAction func onButtonTap(_ sender: UIButton) {
@@ -74,7 +71,6 @@ class SettingsViewController: UIViewController {
             print("Error")
         }
     }
-    
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,8 +101,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                                segment1Title: pushSegmentOptions[1],
                                cellType: .withDatePicker,
                                index: 1,
-                               togglerPosition: isDateViewPresented == true ? 0 : 1)
-            
+                               togglerPosition: userDefaults.isDailyStatsNotificationEnabled,
+                               datePickerDate: DateManager().localNotificationTime)
         }
         cell.delegate = self
         return cell
@@ -114,29 +110,47 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsTableViewCellProtocol {
-    func dropDownHides(cellIndex: Int?) {
-        guard let index = cellIndex else { return }
-        let indexPath = IndexPath(item: index, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .fade)
-    }
-    
     func segmentedControlOption(value: Int, cellIndex: Int?) {
-        value == 0 ? (isDateViewPresented = true) : (isDateViewPresented = false)
-        
         guard let cellIndex = cellIndex else { return }
         switch cellIndex {
         case 0:
             userDefaults.updateWeatherPreference(value: value)
-            print(userDefaults.userWeatherFormatPreference.rawValue)
+        case 1:
+            userDefaults.updateDailyStatsNotificationPreference(value: value)
+            if value == 1 {
+                let dateComponent = DateManager().returnDateComponent(from: DateManager().localNotificationTime, with: .HHmmFormat)
+                notificationsManager.requestNotificationAuthorization()
+                notificationsManager.sendNotification(notificationType: .dailyStatistics, for: dateComponent)
+            } else {
+                //if toggler is inactive - kills the notitfication, resets saved notification time
+                notificationsManager.updateNotification(notificationType: .dailyStatistics)
+                userDefaults.updateNotificationTimePreference(stringDate: nil)
+            }
         default:
             return
         }
-
-        
     }
     
-    func onDatePickerElement(date: Date, cellIndex: Int?, cellType: SettingsViewCellType) {
-        print(date)
+    func dropDownHides(cellIndex: Int?) {
+        guard let index = cellIndex else { return }
+        if index == 1 {
+            let indexPath = IndexPath(item: index, section: 0)
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
     }
     
+    func onDatePickerElement(date: Date, cellType: SettingsViewCellType) {
+        switch cellType {
+        case .withDatePicker:
+            let stringDate = DateManager().transformToString(date: date, format: .HHmmFormat)
+            guard let value = stringDate else { return }
+            //Adds prefered stat to userDefaults as String
+            userDefaults.updateNotificationTimePreference(stringDate: value)
+            //initiates notification sending for the specific time
+            let dateComponent = DateManager().returnDateComponent(from: date)
+            notificationsManager.sendNotification(notificationType: .dailyStatistics, for: dateComponent)
+        default:
+            return
+        }
+    }
 }

@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     private let weatherManager = WeatherManager()
     private var taskManager = TaskManager()
     private var locationManager: CLLocationManager?
+    private var notificationManager = LocalNotificationManager()
     
     private var headerTemperatureSubscriber: AnyCancellable?
     private var headerImageSubscriber: AnyCancellable?
@@ -33,12 +34,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupLocationManager()
+        setupNotificationManager()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //Once settings are closed checks if weather preferences have been changed.
         weatherManager.updateUserPreference()
+    }
+    
+    private func setupNotificationManager() {
+        notificationManager.userNotificationCenter.delegate = self
     }
     
     private func setupLocationManager() {
@@ -70,7 +76,7 @@ class ViewController: UIViewController {
                                                preciseDate: (task.tasksDate as! String),
                                                isNewTask: false)
         } else {
-            let date = DateManager().preciseDate
+            let date = DateManager().currentPreciseDate
             viewController.handler.preciseDate = date
         }
         return viewController
@@ -114,7 +120,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: Header configuration
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tableViewHeaderId) as! ToDoTableHeaderView
-        headerView.dateLabel.text = DateManager().compactDate
+        headerView.dateLabel.text = DateManager().currentCompactDate
         
         //subscribing to Temperature info
         self.headerTemperatureSubscriber = weatherManager.currentWeather
@@ -198,7 +204,7 @@ extension ViewController: DetailedCardViewProtocol {
     }
     
     func saveTask(taskTitle: String?, taskDescription: String?, taskIsDone: Bool, taskPresiceDate: String?) {
-        let preciseDate = taskPresiceDate ?? DateManager().preciseDate
+        let preciseDate = taskPresiceDate ?? DateManager().currentPreciseDate
         taskManager.createNewTask(title: taskTitle ?? "",
                                   description: taskDescription,
                                   taskIsDone: taskIsDone,
@@ -230,5 +236,16 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
+    }
+}
+
+extension ViewController: UNUserNotificationCenterDelegate {
+    //Handles push message window tap
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
     }
 }

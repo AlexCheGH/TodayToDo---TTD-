@@ -35,3 +35,7 @@
 "on" = "On";
 "off" = "Off";
 "select_time" = "Get stats at";
+
+//Local notifications
+"tasks_done_title" = "Your daily stats";
+"tasks_done_description" = "You've done %@ out of %@ tasks today!";

@@ -10,7 +10,7 @@ import UIKit
 protocol SettingsTableViewCellProtocol {
     func segmentedControlOption(value: Int, cellIndex: Int?)
     func dropDownHides(cellIndex: Int?)
-    func onDatePickerElement(date: Date, cellIndex: Int?, cellType: SettingsViewCellType)
+    func onDatePickerElement(date: Date, cellType: SettingsViewCellType)
 }
 
 
@@ -43,7 +43,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     ///Main function to setup a cell. cellType decides whether DatePicker or other elements shoud be presented or not. Toggler position determines the deault toggler position, 0 = Off, 1 = On; 0 = C, 1 = F.
-    func configureCell(labelText: String, segment0Title: String, segment1Title: String, cellType: SettingsViewCellType = .withoutDatePicker, index: Int, togglerPosition: Int) {
+    func configureCell(labelText: String, segment0Title: String, segment1Title: String, cellType: SettingsViewCellType = .withoutDatePicker, index: Int, togglerPosition: Int, datePickerDate: Date? = nil) {
         
         label.text = labelText
         self.dateLabel.text = Localization.Settings.selectTime
@@ -53,15 +53,19 @@ class SettingsTableViewCell: UITableViewCell {
         
         if cellType == .withoutDatePicker {
             datePickerStackView.isHidden = true
-        } else if cellType == .withDatePicker && togglerPosition == 1 {
-            datePickerStackView.isHidden = true
         } else if cellType == .withDatePicker && togglerPosition == 0 {
+            datePickerStackView.isHidden = true
+        } else if cellType == .withDatePicker && togglerPosition == 1 {
             datePickerStackView.isHidden = false
         }
         
         segmentedControl.selectedSegmentIndex = togglerPosition
         segmentedControl.setTitle(segment0Title, forSegmentAt: 0)
         segmentedControl.setTitle(segment1Title, forSegmentAt: 1)
+        
+        if let datePickerDate = datePickerDate {
+            datePicker.date = datePickerDate
+        }
     }
     
     @IBAction func onSegmentedControlTap(_ sender: UISegmentedControl) {
@@ -70,7 +74,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     @IBAction func onDatePicker(_ sender: UIDatePicker) {
-        delegate?.onDatePickerElement(date: sender.date, cellIndex: index, cellType: cellType)
+        delegate?.onDatePickerElement(date: sender.date, cellType: cellType)
     }
     
 }
