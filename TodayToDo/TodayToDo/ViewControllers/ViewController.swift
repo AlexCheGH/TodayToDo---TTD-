@@ -234,9 +234,21 @@ extension ViewController: CLLocationManagerDelegate {
         weatherManager.loadWeather(coordinates: (lat, lon))
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined, .restricted, .denied:
+            //handle later - add dummy info
+            break
+        case .authorizedAlways, .authorizedWhenInUse, .authorized:
+            locationManager?.requestLocation()
+        @unknown default:
+            break
+        }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Swift.Error) {
+    }
+    
 }
 
 extension ViewController: UNUserNotificationCenterDelegate {
