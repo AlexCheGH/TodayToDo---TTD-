@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  TodayToDo
+
+  Created by Alex Chekushkin on 1/23/22.
+  
+*/
+
+//Deletion texts
+"delete_task" = "Delete task?";
+"delete_task_confirmation" = "Are you sure you want to delete the task?";
+
+// Choices
+"yes" = "Yes";
+"no" = "No";
+"cancel" = "Cancel";
+
+//Button Label
+"save" = "Save";
+"status" = "Status";
+"done" = "Done";
+
+//Widget
+"todayToDoWidget" = "TodayToDo Widget";
+"widgetDescription" = "Your tasks done for the day";
+
+//Settings
+"settings" = "Settings";
+"temperature_format" = "Temperature format";
+"temp_celc" = "Celsius";
+"temp_fahr" = "Fahrenheit";
+"temp_celc_compact" = "ºC";
+"temp_fahr_compact" = "ºF";
+"push_messages" = "Push messages";
+"on" = "On";
+"off" = "Off";
+"select_time" = "Get stats at";
+
+//Local notifications
+"tasks_done_title" = "Your daily stats";
+"tasks_done_description" = "You've done %@ out of %@ tasks today!";

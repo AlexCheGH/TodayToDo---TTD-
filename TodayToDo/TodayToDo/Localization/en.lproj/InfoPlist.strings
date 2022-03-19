@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  TodayToDo
+
+  Created by Alex Chekushkin on 2/11/22.
+  
+*/
+
+
+NSLocationAlwaysAndWhenInUseUsageDescription = "The app will be displaying the weather for your location.";
+NSLocationWhenInUseUsageDescription = "The app will be displaying the weather for your location.";
